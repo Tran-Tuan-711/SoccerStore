@@ -32,7 +32,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9"></div>
+            <div class="col-9">
+                <div class="row my-3">
+                    <div class="filter-box d-flex gap-3 mb-3">
+                        <button class="filter-btn flex-fill">Hãng</button>
+                        <button class="filter-btn flex-fill">Giá</button>
+                        <button class="filter-btn flex-fill">Màu Chủ Đạo</button>
+                        <button class="filter-btn flex-fill">Loại Đinh/Mặt Sân</button>
+                        <button class="filter-btn flex-fill">Size</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card border-1">
+                            <img class="card-img" src="~/Content/Images/banner1.jpg" />
+                            <div class="card-body">
+                                <p>Adidas Copa Pure III League TF màu trắng hồng JR2853</p>
+                                <p class="text-danger">2.100.000 ₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -68,5 +90,35 @@
     }
     .sidebar h5{
         padding: 20px 16px;
+    }
+
+    .filter-box {
+        background-color: #1c1c1c;
+        border-radius: 8px;
+        padding: 10px 15px;
+        color: #fff;
+    }
+
+    .filter-btn {
+        background-color: #222;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        color: #bbb;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+        transform: scale(1.1);
+    }   
+
+    .product-card {
+        background-color: #141414;
+        border: 1px solid #222;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
     }
 </style>
