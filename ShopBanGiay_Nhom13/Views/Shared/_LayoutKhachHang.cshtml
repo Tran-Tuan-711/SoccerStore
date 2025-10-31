@@ -12,18 +12,18 @@
         <div class="container">
             <div class="row p-3 header">
                 <div class="col-1">
-                    <img class="w-100 my-1" src="~/Content/Images/logo.jpg" />
+                    <a href="#"><img class="w-100 my-1" src="~/Content/Images/logo.jpg" /></a>
                 </div>
-                <div class="col-10">
+                <div class="col-10" style="padding-left: 60px; padding-right: 40px;">
                     <ul class="nav navbar nav-lv1">
                         <li class="nav-item">
-                            <a class="text-decoration-none text-white" href="/Home/Index">Trang chủ</a>
+                            <a class="home-text text-decoration-none text-white" href="/Home/Index">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a class="text-decoration-none text-white " href="#">Giày bóng đá <i class="angle-down fa-solid fa-angle-down text-white"></i></a>
                             <ul class="nav navbar nav-lv2">
                                 <li class="nav-item nav-link p-2 px-3">
-                                    <a class="text-decoration-none text-white" href="#">Tất cả sản phẩm</a>
+                                    <a class="text-decoration-none text-white" href="/Home/DanhMucSanPham">Tất cả sản phẩm</a>
                                 </li>
                                 <li class="nav-item nav-link p-2 px-3">
                                     <a class="text-decoration-none text-white" href="#">Giày bóng đá sân cỏ nhân tạo</a>
@@ -156,71 +156,9 @@
 
     <main>
         <div class="container">
-            <!-- Banner Section -->
-            <div class="row g-3 my-2">
-                <div class="col-5">
-                    <div class="banner-card h-100">
-                        <img src="~/Content/Images/banner1.jpg" alt="Nike boots">
-                        <a href="#" class="btn-shop btn p-auto">SHOP NOW</a>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="banner-card h-100">
-                        <img src="~/Content/Images/banner2.jpg" alt="Adidas shoes">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row g-3 h-100">
-                        <div class="col-12 h-50" >
-                            <div class="banner-card h-100">
-                                <img src="~/Content/Images/banner3.jpg" alt="Adidas shoes">
-                            </div>
-                        </div>
-                        <div class="col-12 h-50">
-                            <div class="banner-card h-100">
-                                <img src="~/Content/Images/banner4.jpg" alt="Adidas Coral Blaze">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service Row -->
-            <div class="service-box mt-4">
-                <div class="row text-center">
-                    <div class="col">
-                        <div class="service-item">
-                            <i class="service-icon fa-solid fa-map-location-dot"></i>
-                            <p>Hệ thống <span>5 cửa hàng </span>hàng có sẵn</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="service-item">
-                            <i class="service-icon fa-solid fa-truck-fast"></i>
-                            <p>Giao hàng <span>miễn phí</span>, Real time tracking</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="service-item">
-                            <i class="service-icon fa-solid fa-rotate-left"></i>
-                            <p><span>Đổi trả thoải mái</span>, không giới hạn</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="service-item">
-                            <i class="service-icon fa-solid fa-rotate"></i>
-                            <p><span>Gửi 2 chọn 1</span>, hỗ trợ thử size</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="service-item">
-                            <i class="service-icon fa-solid fa-phone-volume"></i>
-                            <p><span>Hỗ trợ 24/7</span> qua tất cả mọi kênh</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="row">
                 @RenderBody()
+            </div>
         </div>
     </main>
 
@@ -235,7 +173,6 @@
                     <p>Để lại email nhận voucher và những chương trình sales mới nhất và sớm nhất.</p>
                     <form>
                         <input class="" type="email" placeholder=" email@example.com" required>
-                        @*<button class="btn btn-sb" type="submit">✈</button>*@
                         <input class="btn btn-sb w-25" type="submit" name="btnSubmitEmail" value="✈" />
                     </form>
                 </div>
@@ -255,10 +192,10 @@
                     <h5 class="mb-3 text-white">Link Hướng Dẫn</h5>
                     <ul class="list-unstyled">
                         <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
                         <li><a href="#">Chính sách bảo hành</a></li>
-                        <li><a href="#">Chính sách đổi hàng</a></li>
-                        <li><a href="#">Giới thiệu về Soccerstore</a></li>
-                        <li><a href="#">Tin tức & Khuyến mãi</a></li>
+                        <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                        <li><a href="#">Hướng dẫn chọn size</a></li>
                     </ul>
                 </div>
 
@@ -289,10 +226,15 @@
     }
     body {
         background-color: #1a1a1a;
-        font-size: 24px;
+        font-size: 20px;
     }
     header {
-        background-color: #000;
+        background: #1a1a1a;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        right: 0;
+        left: 0;
     }
     .nav-lv1{
         position: relative;
@@ -310,7 +252,8 @@
     .nav-lv1 li:hover > a {
         color: aqua !important;
     }
-    .nav-lv1 li:hover .fl-sale{
+    .nav-lv1 li:hover .home-text,
+    .nav-lv1 li:hover .fl-sale {
         color: red !important;
     }
     .nav-lv1 li:hover .nav-lv2 {
@@ -324,15 +267,19 @@
     .service-icon {
         margin: 16px;
         margin-left: 32px;
+        color: #fff;
     }
     .header-icon:hover,
     .service-icon:hover {
         color: #808080 !important;
     }
     /* ========== MAIN LAYOUT ========== */
-
-    .content{
+    main {
+        margin-top: 92px;
         min-height: 800px;
+    }
+    .content{
+        
     }
 
 
@@ -393,6 +340,10 @@
         overflow: hidden;
     }
 
+    .service-item:hover{
+        transform: scale(1.1);
+    } 
+        
     .service-item p {
         margin: 0;
         font-size: 0.9rem;
@@ -404,7 +355,37 @@
         color: #ff5722;
         font-weight: 500;
     }
-    
+
+    .card {
+        background: #202020;
+    }
+    .card-body {
+        background: #1a1a1a;
+        color: #fff;
+    }
+    .card img{
+        padding-top: 16px;
+    }
+    .card:hover{
+        transform: translateY(-5px);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* ======== FOOTER LAYOUT ======== */
     /*body {
         background-color: #111;

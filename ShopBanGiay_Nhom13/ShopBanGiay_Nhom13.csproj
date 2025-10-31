@@ -5813,6 +5813,12 @@
     <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\banner4.jpg" />
     <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\featured-1.png" />
+    <Content Include="Content\Images\featured-2.png" />
+    <Content Include="Content\Images\featured-3.png" />
+    <Content Include="Content\Images\featured-4.jpg" />
+    <Content Include="Content\Images\featured-5.png" />
+    <Content Include="Content\Images\featured-6.png" />
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\search.png" />
     <Content Include="Global.asax" />
@@ -5895,6 +5901,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\DanhMucSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

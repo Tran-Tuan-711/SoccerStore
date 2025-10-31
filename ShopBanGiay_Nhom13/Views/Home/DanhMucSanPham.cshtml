@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "DanhMucSanPham";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+<main>
+    <div class="container">
+        <div class="row p-3 bg-breadcrumb">
+            <div class="flex-row">
+                <a class="breadcrumb-link text-decoration-none text-white" href="/Home/Index">Trang chủ </a><i class="fa-solid fa-angle-right text-white"></i>
+                <label class="text-white text-disabled">Tất cả sản phẩm</label>
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-3 my-3">
+                <div class="sidebar">
+                    <h5 class="text-white">Danh mục sản phẩm</h5>
+                    <div class="form-check text-white">
+                        @*--Foreach Lay ten danh muc san pham--*@
+                        <input class="form-check-input" type="checkbox" id="dm1">
+                        <label class="form-check-label text-white-50" for="dm1">Găng Tay Thủ Môn</label>
+                    </div>
+                </div>
+
+                <div class="sidebar my-4">
+                    <h5 class="text-white">Dòng giày phổ biến</h5>
+                    <div class="form-check text-white">
+                        @*--Foreach Lay ten danh muc san pham pho bien--*@
+                        <input class="form-check-input" type="checkbox" id="dm1">
+                        <label class="form-check-label text-white-50" for="dm1">Adidas copa</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9"></div>
+        </div>
+    </div>
+</main>
+
+
+
+<style>
+    .bg-breadcrumb {
+        background: #232323;
+    }
+    .text-disabled {
+        opacity: 0.3;
+    }
+    .form-check-input{
+        background: none;
+        border-color: #808080;
+    }
+
+    .form-check-label:hover {
+        color: #dcdcdc !important;
+    } 
+
+
+
+    .breadcrumb-link:hover {
+        text-decoration: underline !important;
+        color: aqua !important;
+    }
+    .sidebar {
+        background-color: #1c1c1c;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .sidebar h5{
+        padding: 20px 16px;
+    }
+</style>

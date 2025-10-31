@@ -5,9 +5,6 @@ D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\Antlr3.Runtime.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\Microsoft.Web.Infrastructure.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.dll
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.dll
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.dll
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Mvc.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Optimization.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Providers.dll
@@ -17,9 +14,6 @@ D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\WebGrease.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.xml
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.xml
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.xml
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Mvc.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Razor.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.xml
