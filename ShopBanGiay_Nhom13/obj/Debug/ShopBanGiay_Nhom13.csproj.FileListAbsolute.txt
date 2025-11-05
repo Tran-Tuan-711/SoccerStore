@@ -19,6 +19,6 @@ D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Razor.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.xml
-D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csprojResolveAssemblyReference.cache
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.pdb
+D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csprojResolveAssemblyReference.cache

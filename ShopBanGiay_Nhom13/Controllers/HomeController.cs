@@ -15,6 +15,14 @@ namespace ShopBanGiay_Nhom13.Controllers
         {
             return View();
         }
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+        public ActionResult SignUp()
+        {
+            return View();
+        }
         public ActionResult DanhMucSanPham()
         {
             return View();

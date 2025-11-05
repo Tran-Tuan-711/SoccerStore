@@ -9,12 +9,38 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="row p-3 header">
+        <div class="container-fluid">
+            <div class="row my-3 header">
                 <div class="col-1">
-                    <a href="#"><img class="w-100 my-1" src="~/Content/Images/logo.jpg" /></a>
+                    <a href="#"><img class="w-75 my-1 mx-5" src="~/Content/Images/logo.jpg" /></a>
                 </div>
-                <div class="col-10" style="padding-left: 60px; padding-right: 40px;">
+
+                <div class="col-8">
+                    <form class="d-flex align-items-center justify-content-center">
+                        <div class="input-group w-75">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                            <button class="btn btn-outline-light bg-secondary" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-3">
+                    <div class="d-flex justify-content-between gap-2">
+                        <div class="my-1 w-75">
+                            <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignIn">Sign in</a> 
+                            <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignUp">Sign up</a>
+                        </div>
+                        <a class="w-50" href="/Home/Index">
+                            <i class="header-icon fa-solid fa-cart-shopping text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-2 mb-3 header-bottom" >
+                <div class="col-12" style="padding-left: 240px; padding-right: 240px;">
                     <ul class="nav navbar nav-lv1">
                         <li class="nav-item">
                             <a class="home-text text-decoration-none text-white" href="/Home/Index">Trang chủ</a>
@@ -140,23 +166,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-1">
-                    <div class="d-flex justify-content-between gap-2">
-                        <a class="w-50" href="/Home/Index">
-                            <i class="header-icon fa-solid fa-magnifying-glass text-white"></i>
-                        </a>
-                        <a class="w-50" href="/Home/Index">
-                            <i class="header-icon fa-solid fa-cart-shopping text-white"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <div class="row">
+            <div class="row my-5">
                 @RenderBody()
             </div>
         </div>
@@ -230,13 +246,32 @@
     }
     header {
         background: #1a1a1a;
+        height: 20vh;
         position: fixed;
         z-index: 999;
         top: 0;
         right: 0;
         left: 0;
     }
-    .nav-lv1{
+
+    .input-group .form-control {
+        border-radius: 50px 0 0 50px;
+        padding: 10px 20px;
+    }
+
+    .input-group .btn {
+        border-radius: 0 50px 50px 0;
+        padding: 10px 32px;
+        font-size: 18px;
+    }
+
+    .header-bottom
+    {
+        
+        background: #353535
+    } 
+    
+    .nav-lv1 {
         position: relative;
     }
     .nav-lv2 {
@@ -275,7 +310,7 @@
     }
     /* ========== MAIN LAYOUT ========== */
     main {
-        margin-top: 92px;
+        margin-top: 21vh;
         min-height: 800px;
     }
     .content{
@@ -393,6 +428,7 @@
         font-family: 'Segoe UI', sans-serif;
     }*/
     footer {
+        border-top: 1px solid #333;
         background-color: #1a1a1a;
         color: #eee;
         position: relative;
