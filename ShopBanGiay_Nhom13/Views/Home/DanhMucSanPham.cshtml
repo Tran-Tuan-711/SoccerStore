@@ -3,6 +3,10 @@
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 
+@using ShopBanGiay_Nhom13.Models;
+@model List<SANPHAM>
+
+
 <main>
     <div class="container">
         <div class="row p-3 bg-breadcrumb">
@@ -16,11 +20,17 @@
             <div class="col-3 my-3">
                 <div class="sidebar">
                     <h5 class="text-white">Danh mục sản phẩm</h5>
-                    <div class="form-check text-white">
-                        @*--Foreach Lay ten danh muc san pham--*@
-                        <input class="form-check-input" type="checkbox" id="dm1">
-                        <label class="form-check-label text-white-50" for="dm1">Găng Tay Thủ Môn</label>
-                    </div>
+                    @foreach (SANPHAM sp in Model)
+                    {
+                        if (sp.LOAISP.MAL_CHA != "L001")
+                        {
+                            <div class="form-check text-white">
+                                @*--Foreach Lay ten danh muc san pham--*@
+                                <input class="form-check-input" type="checkbox" id="dm1">
+                                <label class="form-check-label text-white-50 mb-2" for="dm1">@sp.LOAISP.TENL</label>
+                            </div>
+                        }
+                    }
                 </div>
 
                 <div class="sidebar my-4">
@@ -44,18 +54,21 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4">
-                        <div class="card card-item border-1">
-                            <img class="card-img" src="~/Content/Images/banner1.jpg" />
-                            <div class="card-body">
-                                <p>Adidas Copa Pure III League TF màu trắng hồng JR2853</p>
-                                <p class="text-danger">2.100.000 ₫</p>
-                                <div class="text-end">
-                                    <a class="text-decoration-none btn btn-secondary" href="#">Xem chi tiết</a>
+                    @foreach (SANPHAM sp in Model)
+                    {
+                        <div class="col-4">
+                            <div class="card card-item border-1">
+                                <img class="card-img" src="~/Content/Images/@sp.HINHANH" />
+                                <div class="card-body">
+                                    <p style="height: 100px;">@sp.TENSP</p>
+                                    <p class="text-danger">@sp.GIA ₫</p>
+                                    <div class="text-end">
+                                        <a class="text-decoration-none btn btn-secondary" href="#">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
