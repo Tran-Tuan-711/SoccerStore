@@ -61,5 +61,35 @@ namespace ShopBanGiay_Nhom13.Controllers
 
             return View(kho);
         }
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                {
+                    TempData["Error"] = "Không xác định được sản phẩm cần xóa.";
+                    return RedirectToAction("Dashboard");
+                }
+
+                var sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == id);
+                if (sp != null)
+                {
+                    csdl.SANPHAM.Remove(sp);
+                    csdl.SaveChanges();
+                    TempData["Success"] = $"Đã xóa vĩnh viễn sản phẩm: {sp.TENSP}";
+                }
+                else
+                {
+                    TempData["Error"] = "Không tìm thấy sản phẩm cần xóa.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Lỗi khi xóa sản phẩm: " + ex.Message;
+            }
+
+            return RedirectToAction("Dashboard");
+        }
     }
 }
