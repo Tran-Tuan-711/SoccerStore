@@ -59,3 +59,44 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+.card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 150%;
+    transition: all .3s linear;
+    z-index: 0;
+}
+
+.card:hover::before {
+    background-image: linear-gradient(180deg, #ff00c8, cyan);
+    animation: animate 5s ease infinite;
+}
+
+    .card::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: #1a1a1a;
+        border-radius: 15px;
+        z-index: 1;
+    }
+
+@keyframes animate {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

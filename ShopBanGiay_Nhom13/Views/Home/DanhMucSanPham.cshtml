@@ -9,13 +9,14 @@
 
 
 <main>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <div class="container">
         @*<div class="row p-3 bg-breadcrumb">
-            <div class="flex-row">
-                <a class="breadcrumb-link text-decoration-none text-white" href="/Home/Index">Trang chủ </a><i class="fa-solid fa-angle-right text-white"></i>
-                <label class="text-white text-disabled">Tất cả sản phẩm</label>
-            </div>
-        </div>*@
+                <div class="flex-row">
+                    <a class="breadcrumb-link text-decoration-none text-white" href="/Home/Index">Trang chủ </a><i class="fa-solid fa-angle-right text-white"></i>
+                    <label class="text-white text-disabled">Tất cả sản phẩm</label>
+                </div>
+            </div>*@
 
         <div class="row">
             <div class="col-3 my-4 p-1 sticky-column">
@@ -49,22 +50,22 @@
             </div>
             <div class="col-9">
                 @*<div class="row my-2">
-                    <div class="filter-box d-flex gap-3 mb-3">
-                        <button class="filter-btn flex-fill">Hãng</button>
-                        <button class="filter-btn flex-fill">Giá</button>
-                        <button class="filter-btn flex-fill">Màu Chủ Đạo</button>
-                        <button class="filter-btn flex-fill">Loại Đinh/Mặt Sân</button>
-                        <button class="filter-btn flex-fill">Size</button>
-                    </div>
-                </div>*@
+                        <div class="filter-box d-flex gap-3 mb-3">
+                            <button class="filter-btn flex-fill">Hãng</button>
+                            <button class="filter-btn flex-fill">Giá</button>
+                            <button class="filter-btn flex-fill">Màu Chủ Đạo</button>
+                            <button class="filter-btn flex-fill">Loại Đinh/Mặt Sân</button>
+                            <button class="filter-btn flex-fill">Size</button>
+                        </div>
+                    </div>*@
 
                 @if (Model.DanhSachSP != null)
                 {
                     <div class="row my-3">
                         @foreach (SANPHAM sp in Model.DanhSachSP)
                         {
-                            <div class="col-4">
-                                <div class="card card-item border-1">
+                            <div class="col-4 mb-3">
+                                <div class="card cardx card-item border-1">
                                     <img class="card-img" src="~/Content/Images/@sp.HINHANH" />
                                     <div class="card-body">
                                         <p style="height: 80px;">@sp.TENSP</p>
@@ -153,13 +154,23 @@
         transition: all 0.3s ease;
         height: 100%;
     }
+    .card-body {
+        position: relative; /* Quan trọng: z-index chỉ hoạt động với position khác 'static' */
+        z-index: 2; /* Đặt chỉ số xếp chồng cao hơn 1 */
+        color: white;
+    }
 
     .card-item {
         background: #1a1a1a;
         border-color: #232323;
+        padding: 8px;
+        z-index: 2;
     }
 
     .card-item img {
         padding: 8px;
+        z-index: 2;
     }
+    
+
 </style>

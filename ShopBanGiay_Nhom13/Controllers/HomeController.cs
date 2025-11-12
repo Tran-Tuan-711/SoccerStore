@@ -91,7 +91,7 @@ namespace ShopBanGiay_Nhom13.Controllers
 
             var dsLoaiCon = csdl.LOAISP
                                   .Where(lsp => listMaLoaiLienQuan.Contains(lsp.MAL))
-                                  .OrderBy(lsp => lsp.MAL_CHA) // Tùy chọn: giúp nhóm giày/phụ kiện
+                                  .OrderBy(lsp => lsp.MAL_CHA)
                                   .ToList();
 
             var model = new DanhMucViewModel

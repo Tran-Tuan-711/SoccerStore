@@ -258,10 +258,14 @@
         border: 1px solid #808080;
     }
 
-        .nav-lv2 li {
-            width: 360px;
-        }
-
+    .nav-lv2 li {
+        width: 360px;
+    }
+    .nav-lv1 li:hover .angle-down
+    {
+        transform: rotate(-180deg);
+        transition: 0.4s ease;
+    }
     .nav-lv1 li:hover .angle-down,
     .nav-lv1 li:hover > a {
         color: aqua !important;
@@ -288,10 +292,10 @@
         color: #fff;
     }
 
-        .header-icon:hover,
-        .service-icon:hover {
-            color: #808080 !important;
-        }
+    .header-icon:hover,
+    .service-icon:hover {
+        color: #808080 !important;
+    }
     /* ========== MAIN LAYOUT ========== */
     main {
         margin-top: 21vh;
