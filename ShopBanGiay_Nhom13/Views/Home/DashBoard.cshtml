@@ -1,0 +1,247 @@
+﻿@model IEnumerable<ShopBanGiay_Nhom13.Models.Kho>
+
+@{
+    ViewBag.Title = "Product Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    /* HEADER */
+    .dashboard-header {
+        background: linear-gradient(90deg, #007bff 0%, #6610f2 100%);
+        color: #fff;
+        padding: 18px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+        .dashboard-header h3 {
+            font-weight: 700;
+        }
+
+    /* TABLE */
+    .table-dark {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+        .table-dark th {
+            background-color: #11161c !important;
+            color: #00d1b2;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table-dark td {
+            text-align: center;
+            vertical-align: middle;
+            color: #e4e4e4;
+        }
+
+        .table-dark tbody tr:hover {
+            background-color: rgba(13, 202, 240, 0.15);
+            transition: 0.2s;
+        }
+
+    /* IMAGE */
+    .product-thumb {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #333;
+        transition: transform 0.3s ease;
+    }
+
+        .product-thumb:hover {
+            transform: scale(1.1);
+            border-color: #0dcaf0;
+        }
+
+    /* BUTTONS */
+    .btn-edit {
+        background-color: #0dcaf0;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .btn-edit:hover {
+            background-color: #31d2f2;
+            transform: scale(1.05);
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .btn-delete:hover {
+            background-color: #ff4d5c;
+            transform: scale(1.05);
+        }
+
+    /* SEARCH + SORT */
+    .search-box {
+        width: 240px;
+        background-color: #212529;
+        color: #fff;
+        border: 1px solid #555;
+        border-radius: 8px;
+    }
+
+    .sort-select {
+        background-color: #212529;
+        color: #fff;
+        border-radius: 8px;
+        border: 1px solid #555;
+        padding: 6px 10px;
+    }
+
+    /* TABLE CONTAINER */
+    .card {
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container-fluid mt-4">
+    <!-- HEADER -->
+    <div class="dashboard-header d-flex justify-content-between align-items-center mb-4">
+        <h3><i class="fa-solid fa-boxes-stacked me-2"></i>Quản lý sản phẩm</h3>
+        <div class="d-flex align-items-center">
+            <input type="text" id="searchBox" class="form-control me-2 search-box" placeholder="Tìm sản phẩm..." onkeyup="filterProducts()" />
+            <select id="sortSelect" class="sort-select me-3" onchange="applySort()">
+                <option value="" disabled selected>Sắp xếp theo...</option>
+                <option value="masp">Mã sản phẩm (A → Z)</option>
+                <option value="tensp">Tên sản phẩm (A → Z)</option>
+                <option value="giaAsc">Giá tăng dần</option>
+                <option value="giaDesc">Giá giảm dần</option>
+            </select>
+            <a href="@Url.Action("Create", "Kho")" class="btn btn-primary fw-bold">
+                <i class="fa-solid fa-plus"></i> Thêm sản phẩm
+            </a>
+        </div>
+    </div>
+
+    <!-- PRODUCT TABLE -->
+    <div class="card bg-dark border-secondary text-light shadow-lg rounded-3">
+        <div class="card-body">
+            <table class="table table-dark table-striped align-middle text-center" id="productTable">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã SP</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Số lượng</th>
+                        <th>Giá (₫)</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        int index = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr class="product-row"
+                                data-masp="@item.MASP"
+                                data-name="@item.TENSP"
+                                data-price="@item.GIA">
+                                <td>@index</td>
+                                <td>@item.MASP</td>
+                                <td>@item.TENSP</td>
+                                <td>
+                                    <img src="~/Content/Images/@item.HINHANH" alt="@item.TENSP" class="product-thumb" />
+                                </td>
+                                <td>@item.SOLUONG</td>
+                                <td class="text-warning fw-bold">@string.Format("{0:N0}", item.GIA)</td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="@Url.Action("Edit", "Kho", new { id = item.MASP })"
+                                           class="btn btn-edit me-2" title="Chỉnh sửa sản phẩm">
+                                            <i class="fa-solid fa-pen-to-square me-1"></i> Sửa
+                                        </a>
+
+                                        @using (Html.BeginForm("SoftDelete", "Kho", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("id", item.MASP)
+                                            <button type="submit" class="btn btn-delete" title="Xóa tạm sản phẩm"
+                                                    onclick="return confirm('Bạn có chắc muốn xóa tạm sản phẩm này không?')">
+                                                <i class="fa-solid fa-trash-can me-1"></i> Xóa
+                                            </button>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="7" class="text-center text-muted">Không có sản phẩm nào</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Tìm kiếm sản phẩm theo tên
+        function filterProducts() {
+            var input = document.getElementById("searchBox").value.toLowerCase();
+            var rows = document.getElementsByClassName("product-row");
+            for (let i = 0; i < rows.length; i++) {
+                let name = rows[i].getAttribute("data-name").toLowerCase();
+                rows[i].style.display = name.includes(input) ? "" : "none";
+            }
+        }
+
+        // Dropdown sắp xếp
+        function applySort() {
+            var value = document.getElementById("sortSelect").value;
+            switch (value) {
+                case "masp": sortTableByColumn("masp"); break;
+                case "tensp": sortTableByColumn("tensp"); break;
+                case "giaAsc": sortTableByPrice(true); break;
+                case "giaDesc": sortTableByPrice(false); break;
+            }
+        }
+
+        // Sắp xếp theo mã SP hoặc tên SP
+        function sortTableByColumn(type) {
+            var table = document.querySelector("#productTable tbody");
+            var rows = Array.from(table.getElementsByClassName("product-row"));
+            rows.sort(function (a, b) {
+                var aVal = a.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
+                var bVal = b.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
+                return aVal.localeCompare(bVal, 'vi');
+            });
+            table.innerHTML = "";
+            rows.forEach(r => table.appendChild(r));
+        }
+
+        // Sắp xếp theo giá
+        function sortTableByPrice(isAsc) {
+            var table = document.querySelector("#productTable tbody");
+            var rows = Array.from(table.getElementsByClassName("product-row"));
+            rows.sort((a, b) => {
+                var priceA = parseInt(a.getAttribute("data-price"));
+                var priceB = parseInt(b.getAttribute("data-price"));
+                return isAsc ? priceA - priceB : priceB - priceA;
+            });
+            table.innerHTML = "";
+            rows.forEach(r => table.appendChild(r));
+        }
+    </script>
+}

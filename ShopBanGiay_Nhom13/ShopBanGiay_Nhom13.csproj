@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ShopBanGiay_Nhom13</RootNamespace>
     <AssemblyName>ShopBanGiay_Nhom13</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>53587</IISExpressSSLPort>
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -57,11 +59,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -118,6 +117,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
@@ -169,6 +169,7 @@
     <Compile Include="Models\LOAISP.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kho.cs" />
     <Compile Include="Models\PHUKIEN.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -5868,21 +5869,160 @@
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\z.svg" />
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\zap.svg" />
+    <Content Include="Content\Images\019228.jpg" />
+    <Content Include="Content\Images\084705-01.jpg" />
+    <Content Include="Content\Images\084708-01.jpg" />
+    <Content Include="Content\Images\084894-01.jpg" />
+    <Content Include="Content\Images\107923-04.jpg" />
+    <Content Include="Content\Images\107923-04_v2.jpg" />
+    <Content Include="Content\Images\107937-01.jpg" />
+    <Content Include="Content\Images\107937-01_v2.jpg" />
+    <Content Include="Content\Images\107937-03.jpg" />
+    <Content Include="Content\Images\107937-03_v2.jpg" />
+    <Content Include="Content\Images\108366-03.jpg" />
+    <Content Include="Content\Images\108366-03_v2.jpg" />
+    <Content Include="Content\Images\108433-01.jpg" />
+    <Content Include="Content\Images\108595-01.jpg" />
+    <Content Include="Content\Images\108597-03.jpg" />
+    <Content Include="Content\Images\108597-03_v2.jpg" />
+    <Content Include="Content\Images\108846-01.jpg" />
     <Content Include="Content\Images\banner1.jpg" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\banner4.jpg" />
+    <Content Include="Content\Images\bar_blue_red_25_giay.jpg" />
+    <Content Include="Content\Images\bar_blue_red_25_ta.jpg" />
     <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\che_blue_25.jpg" />
+    <Content Include="Content\Images\CU8090-010.jpg" />
+    <Content Include="Content\Images\CU8097-010.jpg" />
+    <Content Include="Content\Images\DN3611-100.jpg" />
+    <Content Include="Content\Images\DN3611-395.jpg" />
+    <Content Include="Content\Images\DN3611-745.jpg" />
+    <Content Include="Content\Images\DN3611-745_v2.jpg" />
+    <Content Include="Content\Images\DN3611-850.jpg" />
+    <Content Include="Content\Images\DN3614-850.jpg" />
+    <Content Include="Content\Images\DV0761-395.jpg" />
+    <Content Include="Content\Images\DV4351-180.jpg" />
+    <Content Include="Content\Images\DV4351-444.jpg" />
+    <Content Include="Content\Images\F08449-300.jpg" />
     <Content Include="Content\Images\featured-1.png" />
     <Content Include="Content\Images\featured-2.png" />
     <Content Include="Content\Images\featured-3.png" />
     <Content Include="Content\Images\featured-4.jpg" />
     <Content Include="Content\Images\featured-5.png" />
     <Content Include="Content\Images\featured-6.png" />
+    <Content Include="Content\Images\FJ2577-002.jpg" />
+    <Content Include="Content\Images\FQ1457-302.jpg" />
+    <Content Include="Content\Images\FQ8284-301.jpg" />
+    <Content Include="Content\Images\FQ8284-800.jpg" />
+    <Content Include="Content\Images\FQ8284-800_v3.jpg" />
+    <Content Include="Content\Images\FQ8285-400.jpg" />
+    <Content Include="Content\Images\FQ8285-801.jpg" />
+    <Content Include="Content\Images\FQ8329-600.jpg" />
     <Content Include="Content\Images\GKVN01.jpg" />
+    <Content Include="Content\Images\gkvn_dongkiem.jpg" />
+    <Content Include="Content\Images\gkvn_dongkiem_em_v2.jpg" />
+    <Content Include="Content\Images\gkvn_dongkiem_v2.jpg" />
+    <Content Include="Content\Images\gkvn_kd_den.jpg" />
+    <Content Include="Content\Images\gkvn_kd_den_v2.jpg" />
+    <Content Include="Content\Images\gkvn_kd_vang.jpg" />
+    <Content Include="Content\Images\gkvn_kd_vang_v2.jpg" />
+    <Content Include="Content\Images\gkvn_kd_xanhmint.jpg" />
+    <Content Include="Content\Images\gkvn_kd_xanhmint_v2.jpg" />
+    <Content Include="Content\Images\gkvn_thuy_procontact.jpg" />
+    <Content Include="Content\Images\gkvn_thuy_procontact_v2.jpg" />
+    <Content Include="Content\Images\gkvn_tuxedo.jpg" />
+    <Content Include="Content\Images\gkvn_tuxedo_v2.jpg" />
+    <Content Include="Content\Images\HJ4123-800.jpg" />
+    <Content Include="Content\Images\HO2317-800.jpg" />
+    <Content Include="Content\Images\HO2317-800_v2.jpg" />
+    <Content Include="Content\Images\HQ0256-635.jpg" />
+    <Content Include="Content\Images\HQ0256-635_v2.jpg" />
+    <Content Include="Content\Images\HQ2038-400.jpg" />
+    <Content Include="Content\Images\HQ2038-800.jpg" />
+    <Content Include="Content\Images\HQ2049-800.jpg" />
+    <Content Include="Content\Images\HS9767.jpg" />
+    <Content Include="Content\Images\HV4392-100.jpg" />
+    <Content Include="Content\Images\HV9915-100.jpg" />
+    <Content Include="Content\Images\IB1514-600.jpg" />
+    <Content Include="Content\Images\ID3794.jpg" />
+    <Content Include="Content\Images\ID4053.jpg" />
+    <Content Include="Content\Images\IE1168.jpg" />
+    <Content Include="Content\Images\IF6373.jpg" />
+    <Content Include="Content\Images\IF8194-830.jpg" />
+    <Content Include="Content\Images\IF8194-830_v2.jpg" />
+    <Content Include="Content\Images\IP3895.jpg" />
+    <Content Include="Content\Images\IP4000.jpg" />
+    <Content Include="Content\Images\JF3108.jpg" />
+    <Content Include="Content\Images\JH7618.jpg" />
+    <Content Include="Content\Images\JH7723.jpg" />
+    <Content Include="Content\Images\JI0002.jpg" />
+    <Content Include="Content\Images\JI0004.jpg" />
+    <Content Include="Content\Images\JI0015.jpg" />
+    <Content Include="Content\Images\JI1092.jpg" />
+    <Content Include="Content\Images\JI3550.jpg" />
+    <Content Include="Content\Images\JR2853.jpg" />
+    <Content Include="Content\Images\JR2893.jpg" />
+    <Content Include="Content\Images\JR5893.jpg" />
+    <Content Include="Content\Images\JR9329.jpg" />
+    <Content Include="Content\Images\KL03-XA.jpg" />
+    <Content Include="Content\Images\KMTF240210.jpg" />
+    <Content Include="Content\Images\KMTF240210_v2.jpg" />
+    <Content Include="Content\Images\KMTF240229.jpg" />
+    <Content Include="Content\Images\KMTF240321.jpg" />
+    <Content Include="Content\Images\KMTF240355.jpg" />
+    <Content Include="Content\Images\KMTF240356.jpg" />
+    <Content Include="Content\Images\Ligpro_cool_spray.jpg" />
+    <Content Include="Content\Images\Ligpro_hot_spray.jpg" />
+    <Content Include="Content\Images\liv_red_25_26_ta.jpg" />
+    <Content Include="Content\Images\liv_red_25_giay.jpg" />
+    <Content Include="Content\Images\liv_red_25_kid.jpg" />
     <Content Include="Content\Images\logo.jpg" />
+    <Content Include="Content\Images\man_city_blue_25.jpg" />
+    <Content Include="Content\Images\man_red_25.jpg" />
+    <Content Include="Content\Images\mitre_vanlang_cam.jpg" />
+    <Content Include="Content\Images\mitre_vanlang_xanhduong.jpg" />
+    <Content Include="Content\Images\Nevor_BDG12_redblack.jpg" />
+    <Content Include="Content\Images\Nevor_BDG13_white.jpg" />
+    <Content Include="Content\Images\Nevor_BQCC04_ankle.jpg" />
+    <Content Include="Content\Images\Nevor_TCN06_dentrang.jpg" />
+    <Content Include="Content\Images\P1GA242527.jpg" />
+    <Content Include="Content\Images\P1GD242501.jpg" />
+    <Content Include="Content\Images\P1GD256260.jpg" />
+    <Content Include="Content\Images\Q1GB240392.jpg" />
+    <Content Include="Content\Images\Q1GB250209.jpg" />
+    <Content Include="Content\Images\Q1GB250260.jpg" />
+    <Content Include="Content\Images\Q1GB251209.jpg" />
+    <Content Include="Content\Images\Q1GB251309.jpg" />
+    <Content Include="Content\Images\Q1GB251309_v2.jpg" />
+    <Content Include="Content\Images\Q1GB254009.jpg" />
+    <Content Include="Content\Images\Q1GB254009_v2.jpg" />
+    <Content Include="Content\Images\Q1GB254060.jpg" />
+    <Content Include="Content\Images\Q1GB254060_v2.jpg" />
     <Content Include="Content\Images\QADB01.jpg" />
     <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\Sigo_gray_01-XA.jpg" />
+    <Content Include="Content\Images\Sigo_navy_01-XB.jpg" />
+    <Content Include="Content\Images\Sigo_red_01-DO.jpg" />
+    <Content Include="Content\Images\Spinnix_Novix_knee.jpg" />
+    <Content Include="Content\Images\Spinnix_ProX_combo.jpg" />
+    <Content Include="Content\Images\Spinnix_ProX_trangcam.jpg" />
+    <Content Include="Content\Images\Spinnix_ProX_trangxanh.jpg" />
+    <Content Include="Content\Images\Spinnix_Virex_knee_black.jpg" />
+    <Content Include="Content\Images\Spinnix_Virex_knee_single.jpg" />
+    <Content Include="Content\Images\SX4120-101.jpg" />
+    <Content Include="Content\Images\wika_qh19_xanhngoccam.jpg" />
+    <Content Include="Content\Images\wika_th10_kem.jpg" />
+    <Content Include="Content\Images\wika_th10_xanhngoc.jpg" />
+    <Content Include="Content\Images\Wika_WCT-TR_trang.jpg" />
+    <Content Include="Content\Images\Wika_WCT-VA_vang.jpg" />
+    <Content Include="Content\Images\Wika_WCT-XB_xanhblue.jpg" />
+    <Content Include="Content\Images\ZK5-L206.jpg" />
+    <Content Include="Content\Images\Zocker_inspire_orange.jpg" />
+    <Content Include="Content\Images\Zocker_inspire_pinkwhite.jpg" />
+    <Content Include="Content\Images\Zocker_inspire_purple.jpg" />
+    <Content Include="Content\Images\Zocker_inspire_redwhite.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Data.Context.tt">
@@ -5984,6 +6124,7 @@
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Home\PhuKien.cshtml" />
+    <Content Include="Views\Home\DashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
