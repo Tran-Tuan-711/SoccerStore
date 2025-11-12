@@ -19,7 +19,7 @@
             font-weight: 700;
         }
 
-    /* TABLE */
+    /* TABLE STYLE */
     .table-dark {
         text-align: center;
         vertical-align: middle;
@@ -89,27 +89,46 @@
             transform: scale(1.05);
         }
 
-    /* SEARCH + SORT */
-    .search-box {
-        width: 240px;
+    .search-box, .sort-select {
         background-color: #212529;
         color: #fff;
         border: 1px solid #555;
         border-radius: 8px;
     }
 
-    .sort-select {
-        background-color: #212529;
-        color: #fff;
-        border-radius: 8px;
-        border: 1px solid #555;
-        padding: 6px 10px;
+    /* PAGINATION */
+    .pagination {
+        justify-content: center;
+        margin-top: 20px;
+        gap: 4px;
+        flex-wrap: wrap;
     }
 
-    /* TABLE CONTAINER */
-    .card {
-        border-radius: 12px;
-    }
+        .pagination button {
+            background-color: #212529;
+            border: 1px solid #444;
+            color: #00d1b2;
+            border-radius: 6px;
+            padding: 6px 10px;
+            min-width: 36px;
+            transition: 0.2s;
+        }
+
+            .pagination button:hover {
+                background-color: #0dcaf0;
+                color: #000;
+            }
+
+            .pagination button.active {
+                background-color: #0dcaf0;
+                color: #000;
+                font-weight: 700;
+            }
+
+        .pagination .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
 </style>
 
 <div class="container-fluid mt-4">
@@ -146,7 +165,7 @@
                         <th>Hành động</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     @if (Model != null && Model.Any())
                     {
                         int index = 1;
@@ -159,23 +178,17 @@
                                 <td>@index</td>
                                 <td>@item.MASP</td>
                                 <td>@item.TENSP</td>
-                                <td>
-                                    <img src="~/Content/Images/@item.HINHANH" alt="@item.TENSP" class="product-thumb" />
-                                </td>
+                                <td><img src="~/Content/Images/@item.HINHANH" alt="@item.TENSP" class="product-thumb" /></td>
                                 <td>@item.SOLUONG</td>
                                 <td class="text-warning fw-bold">@string.Format("{0:N0}", item.GIA)</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="@Url.Action("Edit", "Kho", new { id = item.MASP })"
-                                           class="btn btn-edit me-2" title="Chỉnh sửa sản phẩm">
-                                            <i class="fa-solid fa-pen-to-square me-1"></i> Sửa
-                                        </a>
-
+                                           class="btn btn-edit me-2"><i class="fa-solid fa-pen-to-square me-1"></i> Sửa</a>
                                         @using (Html.BeginForm("SoftDelete", "Kho", FormMethod.Post))
                                         {
                                             @Html.Hidden("id", item.MASP)
-                                            <button type="submit" class="btn btn-delete" title="Xóa tạm sản phẩm"
-                                                    onclick="return confirm('Bạn có chắc muốn xóa tạm sản phẩm này không?')">
+                                            <button type="submit" class="btn btn-delete" onclick="return confirm('Bạn có chắc muốn xóa tạm sản phẩm này không?')">
                                                 <i class="fa-solid fa-trash-can me-1"></i> Xóa
                                             </button>
                                         }
@@ -191,57 +204,108 @@
                     }
                 </tbody>
             </table>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
         </div>
     </div>
 </div>
 
 @section Scripts {
     <script>
-        // Tìm kiếm sản phẩm theo tên
-        function filterProducts() {
-            var input = document.getElementById("searchBox").value.toLowerCase();
-            var rows = document.getElementsByClassName("product-row");
-            for (let i = 0; i < rows.length; i++) {
-                let name = rows[i].getAttribute("data-name").toLowerCase();
-                rows[i].style.display = name.includes(input) ? "" : "none";
+        const rowsPerPage = 10;
+        let currentPage = 1;
+
+        function displayTablePage(page) {
+            const rows = document.querySelectorAll(".product-row");
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            currentPage = page;
+
+            rows.forEach((row, index) => {
+                row.style.display = (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage) ? "" : "none";
+            });
+
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            const addButton = (label, pg, disabled = false) => {
+                let btn = document.createElement("button");
+                btn.innerText = label;
+                if (disabled) btn.classList.add("disabled");
+                if (pg === currentPage) btn.classList.add("active");
+                btn.onclick = () => displayTablePage(pg);
+                pagination.appendChild(btn);
+            };
+
+            // Nút Previous
+            addButton("«", Math.max(1, currentPage - 1), currentPage === 1);
+
+            let start = Math.max(1, currentPage - 2);
+            let end = Math.min(totalPages, currentPage + 2);
+
+            if (start > 1) {
+                addButton("1", 1);
+                if (start > 2) pagination.append("...");
             }
+
+            for (let i = start; i <= end; i++) addButton(i, i);
+
+            if (end < totalPages) {
+                if (end < totalPages - 1) pagination.append("...");
+                addButton(totalPages, totalPages);
+            }
+
+            // Nút Next
+            addButton("»", Math.min(totalPages, currentPage + 1), currentPage === totalPages);
         }
 
-        // Dropdown sắp xếp
+        // Tìm kiếm sản phẩm theo tên
+        function filterProducts() {
+            const input = document.getElementById("searchBox").value.toLowerCase();
+            const rows = document.querySelectorAll(".product-row");
+            rows.forEach(row => {
+                const name = row.getAttribute("data-name").toLowerCase();
+                row.style.display = name.includes(input) ? "" : "none";
+            });
+            displayTablePage(1);
+        }
+
+        // Sắp xếp
         function applySort() {
-            var value = document.getElementById("sortSelect").value;
+            const value = document.getElementById("sortSelect").value;
             switch (value) {
                 case "masp": sortTableByColumn("masp"); break;
                 case "tensp": sortTableByColumn("tensp"); break;
                 case "giaAsc": sortTableByPrice(true); break;
                 case "giaDesc": sortTableByPrice(false); break;
             }
+            displayTablePage(1);
         }
 
-        // Sắp xếp theo mã SP hoặc tên SP
         function sortTableByColumn(type) {
-            var table = document.querySelector("#productTable tbody");
-            var rows = Array.from(table.getElementsByClassName("product-row"));
-            rows.sort(function (a, b) {
-                var aVal = a.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
-                var bVal = b.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
+            const table = document.querySelector("#tableBody");
+            const rows = Array.from(table.getElementsByClassName("product-row"));
+            rows.sort((a, b) => {
+                const aVal = a.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
+                const bVal = b.getAttribute(type === "masp" ? "data-masp" : "data-name").toLowerCase();
                 return aVal.localeCompare(bVal, 'vi');
             });
             table.innerHTML = "";
             rows.forEach(r => table.appendChild(r));
         }
 
-        // Sắp xếp theo giá
         function sortTableByPrice(isAsc) {
-            var table = document.querySelector("#productTable tbody");
-            var rows = Array.from(table.getElementsByClassName("product-row"));
+            const table = document.querySelector("#tableBody");
+            const rows = Array.from(table.getElementsByClassName("product-row"));
             rows.sort((a, b) => {
-                var priceA = parseInt(a.getAttribute("data-price"));
-                var priceB = parseInt(b.getAttribute("data-price"));
+                const priceA = parseInt(a.getAttribute("data-price"));
+                const priceB = parseInt(b.getAttribute("data-price"));
                 return isAsc ? priceA - priceB : priceB - priceA;
             });
             table.innerHTML = "";
             rows.forEach(r => table.appendChild(r));
         }
+
+        window.onload = () => displayTablePage(1);
     </script>
 }
