@@ -47,6 +47,12 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -139,6 +145,7 @@
     <Compile Include="Models\CHITIETHOADON.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhMucViewModel.cs" />
     <Compile Include="Models\Data.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5879,10 +5886,11 @@
     <Content Include="Content\Images\featured-4.jpg" />
     <Content Include="Content\Images\featured-5.png" />
     <Content Include="Content\Images\featured-6.png" />
-    <Content Include="Content\Images\GKVN01.jpg" />
+    <Content Include="Content\Images\gkvn_kd_den.jpg" />
     <Content Include="Content\Images\logo.jpg" />
-    <Content Include="Content\Images\QADB01.jpg" />
+    <Content Include="Content\Images\liv_red_25_26_ta.jpg" />
     <Content Include="Content\Images\search.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Data.Context.tt">

@@ -32,3 +32,7 @@ D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Net.Http.Form
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
+D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.dll
+D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.Mvc.dll
+D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.xml
+D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.Mvc.xml
