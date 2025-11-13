@@ -5887,9 +5887,12 @@
     <Content Include="Content\Images\featured-5.png" />
     <Content Include="Content\Images\featured-6.png" />
     <Content Include="Content\Images\gkvn_kd_den.jpg" />
+    <Content Include="Content\Images\icon-call.jpg" />
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\liv_red_25_26_ta.jpg" />
+    <Content Include="Content\Images\Q1GB254060_v2.jpg" />
     <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\zalo.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -5992,6 +5995,7 @@
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Home\PhuKien.cshtml" />
+    <Content Include="Views\Home\ChiTietSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

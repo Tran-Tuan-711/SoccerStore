@@ -24,10 +24,16 @@ namespace ShopBanGiay_Nhom13.Controllers
         }
         public ActionResult SignIn()
         {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
             return View();
         }
         public ActionResult SignUp()
         {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
             return View();
         }
         public ActionResult DanhMucSanPham()
@@ -128,6 +134,14 @@ namespace ShopBanGiay_Nhom13.Controllers
                 PhanLoai = "PhuKien"
             };
             return View("DanhMucSanPham", model);
+        }
+        public ActionResult ChiTietSanPham(string masp)
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            SANPHAM ctsp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == masp);
+            return View(ctsp);
         }
     }
 }
