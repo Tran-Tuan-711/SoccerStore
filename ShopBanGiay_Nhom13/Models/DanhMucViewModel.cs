@@ -12,6 +12,7 @@ namespace ShopBanGiay_Nhom13.Models
         public List<LOAISP> DanhSachLoaiSP { get; set; }
         public string PhanLoai { get; set; }
         public string MaLoaiHienTai { get; set; }
-        
+        public string MaThuongHieuHienTai { get; set; }
+
     }
 }

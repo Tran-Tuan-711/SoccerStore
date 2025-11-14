@@ -1,5 +1,16 @@
 ﻿@{
-    ViewBag.Title = Model.PhanLoai == "PhuKien" ? "Phụ Kiện" : "Giày bóng đá";
+    if (Model.PhanLoai == "PhuKien")
+    {
+        ViewBag.Title = "Phụ Kiện";
+    }
+    else if (Model.PhanLoai == "ThuongHieu")
+    {
+        ViewBag.Title = "Thương Hiệu";
+    }
+    else
+    {
+        ViewBag.Title = "Giày bóng đá";
+    }
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 @using PagedList
@@ -22,7 +33,23 @@
             <div class="col-3 my-4 p-1 sticky-column">
                 <div class="sidebar">
                     <h5 class="text-white mx-4 mb-4 border-bottom ">Danh mục sản phẩm</h5>
-                    @if (Model.DanhSachLoaiSP != null)
+                   @if (Model.DanhSachLoaiSP != null && Model.PhanLoai != "ThuongHieu")
+                    {
+                        foreach (LOAISP lsp in Model.DanhSachLoaiSP)
+                        {
+
+                            if (lsp.TENL != "Phụ kiện")
+                            {
+                                @*--Foreach Lay ten danh muc san pham--*@
+                                <a href="/Home/LocSanPham/?MAL=@lsp.MAL"
+                                   class="text-decoration-none">
+                                    <label class="form-check-label text-white-50 mb-2 mx-4 d-block" style="font-size: 16px; font-weight: 500;">@lsp.TENL</label>
+                                </a>
+                            }
+
+                        }
+                    }
+                    else
                     {
                         foreach (LOAISP lsp in Model.DanhSachLoaiSP)
                         {
@@ -155,8 +182,8 @@
         height: 100%;
     }
     .card-body {
-        position: relative; /* Quan trọng: z-index chỉ hoạt động với position khác 'static' */
-        z-index: 2; /* Đặt chỉ số xếp chồng cao hơn 1 */
+        position: relative;
+        z-index: 2;
         color: white;
     }
 
@@ -168,9 +195,8 @@
     }
 
     .card-item img {
+        background: #1a1a1a;
         padding: 8px;
         z-index: 2;
     }
-    
-
 </style>

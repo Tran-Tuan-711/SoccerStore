@@ -83,14 +83,14 @@ textarea {
     animation: animate 5s ease infinite;
 }
 
-    .card::after {
-        content: '';
-        position: absolute;
-        inset: 2px;
-        background: #1a1a1a;
-        border-radius: 15px;
-        z-index: 1;
-    }
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    z-index: 1;
+}
 
 @keyframes animate {
     from{
