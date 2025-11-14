@@ -36,3 +36,41 @@ D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.Mvc.dll
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.xml
 D:\WorkSpace\DoAn\ShopBanGiay_Nhom13\ShopBanGiay_Nhom13\bin\PagedList.Mvc.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll.config
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.pdb
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\Antlr3.Runtime.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Infrastructure.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Optimization.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Providers.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\WebGrease.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.xml
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.dll
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.pdb
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.AssemblyReference.cache
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.CoreCompileInputs.cache
+E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
