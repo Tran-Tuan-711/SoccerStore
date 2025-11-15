@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +50,12 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -139,6 +148,7 @@
     <Compile Include="Models\CHITIETHOADON.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhMucViewModel.cs" />
     <Compile Include="Models\Data.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5868,21 +5878,158 @@
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\z.svg" />
     <Content Include="Content\fontawesome-free-7.1.0-web\fontawesome-free-7.1.0-web\svgs\solid\zap.svg" />
+    <Content Include="Content\Images\019228.png" />
+    <Content Include="Content\Images\084705-01.png" />
+    <Content Include="Content\Images\084708-01.png" />
+    <Content Include="Content\Images\084894-01.png" />
+    <Content Include="Content\Images\107923-04.png" />
+    <Content Include="Content\Images\107923-04_v2.png" />
+    <Content Include="Content\Images\107937-01.png" />
+    <Content Include="Content\Images\107937-01_v2.png" />
+    <Content Include="Content\Images\107937-03.png" />
+    <Content Include="Content\Images\107937-03_v2.png" />
+    <Content Include="Content\Images\108366-03.png" />
+    <Content Include="Content\Images\108366-03_v2.png" />
+    <Content Include="Content\Images\108433-01 - Copy.png" />
+    <Content Include="Content\Images\108433-01.png" />
+    <Content Include="Content\Images\108595-01.png" />
+    <Content Include="Content\Images\108597-03.png" />
+    <Content Include="Content\Images\108597-03_v2.png" />
+    <Content Include="Content\Images\108846-01.png" />
     <Content Include="Content\Images\banner1.jpg" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\banner4.jpg" />
-    <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\bar_blue_red_25_giay.png" />
+    <Content Include="Content\Images\bar_blue_red_25_ta.png" />
+    <Content Include="Content\Images\che_blue_25.png" />
+    <Content Include="Content\Images\CU8090-010.png" />
+    <Content Include="Content\Images\CU8097-010.png" />
+    <Content Include="Content\Images\DN3611-100.png" />
+    <Content Include="Content\Images\DN3611-395.png" />
+    <Content Include="Content\Images\DN3611-745.png" />
+    <Content Include="Content\Images\DN3611-745_v2.png" />
+    <Content Include="Content\Images\DN3611-850.png" />
+    <Content Include="Content\Images\DN3614-850.png" />
+    <Content Include="Content\Images\DV0761-395.png" />
+    <Content Include="Content\Images\DV4351-180.png" />
+    <Content Include="Content\Images\DV4351-444.png" />
+    <Content Include="Content\Images\F08449-300.png" />
     <Content Include="Content\Images\featured-1.png" />
     <Content Include="Content\Images\featured-2.png" />
     <Content Include="Content\Images\featured-3.png" />
     <Content Include="Content\Images\featured-4.jpg" />
     <Content Include="Content\Images\featured-5.png" />
     <Content Include="Content\Images\featured-6.png" />
-    <Content Include="Content\Images\GKVN01.jpg" />
+    <Content Include="Content\Images\FJ2577-002.png" />
+    <Content Include="Content\Images\FQ1457-302.png" />
+    <Content Include="Content\Images\FQ8284-301.png" />
+    <Content Include="Content\Images\FQ8284-800.png" />
+    <Content Include="Content\Images\FQ8284-800_v3.png" />
+    <Content Include="Content\Images\FQ8285-400.png" />
+    <Content Include="Content\Images\FQ8329-600.png" />
+    <Content Include="Content\Images\gkvn_dongkiem.png" />
+    <Content Include="Content\Images\gkvn_dongkiem_em_v2.png" />
+    <Content Include="Content\Images\gkvn_kd_den.png" />
+    <Content Include="Content\Images\gkvn_kd_den_v2.png" />
+    <Content Include="Content\Images\gkvn_kd_vang.png" />
+    <Content Include="Content\Images\gkvn_kd_vang_v2.png" />
+    <Content Include="Content\Images\gkvn_kd_xanhmint.png" />
+    <Content Include="Content\Images\gkvn_kd_xanhmint_v2.png" />
+    <Content Include="Content\Images\gkvn_thuy_procontact.png" />
+    <Content Include="Content\Images\gkvn_thuy_procontact_v2.png" />
+    <Content Include="Content\Images\gkvn_tuxedo.png" />
+    <Content Include="Content\Images\gkvn_tuxedo_v2.png" />
+    <Content Include="Content\Images\HJ4123-800.png" />
+    <Content Include="Content\Images\HO2317-800.png" />
+    <Content Include="Content\Images\HO2317-800_v2.png" />
+    <Content Include="Content\Images\HQ0256-635.png" />
+    <Content Include="Content\Images\HQ0256-635_v2.png" />
+    <Content Include="Content\Images\HQ2038-400.png" />
+    <Content Include="Content\Images\HQ2038-800.png" />
+    <Content Include="Content\Images\HQ2049-800.png" />
+    <Content Include="Content\Images\HS9767.png" />
+    <Content Include="Content\Images\HV4392-100.png" />
+    <Content Include="Content\Images\HV9915-100.png" />
+    <Content Include="Content\Images\IB1514-600.png" />
+    <Content Include="Content\Images\icon-call.jpg" />
+    <Content Include="Content\Images\ID3794.png" />
+    <Content Include="Content\Images\ID4053.png" />
+    <Content Include="Content\Images\IE1168.png" />
+    <Content Include="Content\Images\IF6373.png" />
+    <Content Include="Content\Images\IF8194-830.png" />
+    <Content Include="Content\Images\IF8194-830_v2.png" />
+    <Content Include="Content\Images\IP3895.png" />
+    <Content Include="Content\Images\IP4000.png" />
+    <Content Include="Content\Images\JF3108.png" />
+    <Content Include="Content\Images\JH7618.png" />
+    <Content Include="Content\Images\JH7723.png" />
+    <Content Include="Content\Images\JI0002.png" />
+    <Content Include="Content\Images\JI0004.png" />
+    <Content Include="Content\Images\JI0015.png" />
+    <Content Include="Content\Images\JI1092.png" />
+    <Content Include="Content\Images\JI3550.png" />
+    <Content Include="Content\Images\JR2853.png" />
+    <Content Include="Content\Images\JR2893.png" />
+    <Content Include="Content\Images\JR5893.png" />
+    <Content Include="Content\Images\JR9329.png" />
+    <Content Include="Content\Images\KL03-XA.png" />
+    <Content Include="Content\Images\KMTF240210.png" />
+    <Content Include="Content\Images\KMTF240210_v2.png" />
+    <Content Include="Content\Images\KMTF240229.png" />
+    <Content Include="Content\Images\KMTF240321.png" />
+    <Content Include="Content\Images\KMTF240355.png" />
+    <Content Include="Content\Images\KMTF240356.png" />
+    <Content Include="Content\Images\Ligpro_cool_spray.png" />
+    <Content Include="Content\Images\Ligpro_hot_spray.png" />
+    <Content Include="Content\Images\liv_red_25_26_ta.png" />
+    <Content Include="Content\Images\liv_red_25_giay.png" />
+    <Content Include="Content\Images\liv_red_25_kid.png" />
     <Content Include="Content\Images\logo.jpg" />
-    <Content Include="Content\Images\QADB01.jpg" />
-    <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\man_city_blue_25.png" />
+    <Content Include="Content\Images\man_red_25.png" />
+    <Content Include="Content\Images\mitre_vanlang_cam.png" />
+    <Content Include="Content\Images\mitre_vanlang_xanhduong.png" />
+    <Content Include="Content\Images\Nevor_BDG12_redblack.png" />
+    <Content Include="Content\Images\Nevor_BDG13_white.png" />
+    <Content Include="Content\Images\Nevor_BQCC04_ankle.png" />
+    <Content Include="Content\Images\Nevor_TCN06_dentrang.png" />
+    <Content Include="Content\Images\P1GA242527.png" />
+    <Content Include="Content\Images\P1GD242501.png" />
+    <Content Include="Content\Images\P1GD256260.png" />
+    <Content Include="Content\Images\Q1GB240392.png" />
+    <Content Include="Content\Images\Q1GB250209.png" />
+    <Content Include="Content\Images\Q1GB250260.png" />
+    <Content Include="Content\Images\Q1GB251209.png" />
+    <Content Include="Content\Images\Q1GB251309.png" />
+    <Content Include="Content\Images\Q1GB251309_v2.png" />
+    <Content Include="Content\Images\Q1GB254009.png" />
+    <Content Include="Content\Images\Q1GB254009_v2.png" />
+    <Content Include="Content\Images\Q1GB254060.png" />
+    <Content Include="Content\Images\Q1GB254060_v2.png" />
+    <Content Include="Content\Images\Sigo_gray_01-XA.png" />
+    <Content Include="Content\Images\Sigo_navy_01-XB.png" />
+    <Content Include="Content\Images\Sigo_red_01-DO.png" />
+    <Content Include="Content\Images\Spinnix_Novix_knee.png" />
+    <Content Include="Content\Images\Spinnix_ProX_combo.png" />
+    <Content Include="Content\Images\Spinnix_ProX_trangcam.png" />
+    <Content Include="Content\Images\Spinnix_ProX_trangxanh.png" />
+    <Content Include="Content\Images\Spinnix_Virex_knee_black.png" />
+    <Content Include="Content\Images\Spinnix_Virex_knee_single.png" />
+    <Content Include="Content\Images\SX4120-101.png" />
+    <Content Include="Content\Images\wika_qh19_xanhngoccam.png" />
+    <Content Include="Content\Images\wika_th10_kem.png" />
+    <Content Include="Content\Images\wika_th10_xanhngoc.png" />
+    <Content Include="Content\Images\Wika_WCT-TR_trang.png" />
+    <Content Include="Content\Images\Wika_WCT-VA_vang.png" />
+    <Content Include="Content\Images\Wika_WCT-XB_xanhblue.png" />
+    <Content Include="Content\Images\zalo.jpg" />
+    <Content Include="Content\Images\ZK5-L206.png" />
+    <Content Include="Content\Images\Zocker_inspire_orange.png" />
+    <Content Include="Content\Images\Zocker_inspire_pinkwhite.png" />
+    <Content Include="Content\Images\Zocker_inspire_purple.png" />
+    <Content Include="Content\Images\Zocker_inspire_redwhite.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Data.Context.tt">
@@ -5984,6 +6131,7 @@
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Home\PhuKien.cshtml" />
+    <Content Include="Views\Home\ChiTietSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -6019,6 +6167,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.22.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
