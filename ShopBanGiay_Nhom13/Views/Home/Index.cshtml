@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+    List<SANPHAM> dsSPNB = ViewBag.spNB as List<SANPHAM>;
 }
+@using ShopBanGiay_Nhom13.Models;
+
 <link href="~/Content/Site.css" rel="stylesheet" />
 <main>
     <div class="container">
@@ -26,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-12 h-50">
-                        <div class="banner-card">
+                        <div class="banner-card my-4">
                             <img src="~/Content/Images/banner4.jpg" alt="Adidas Coral Blaze">
                         </div>
                     </div>
@@ -37,7 +40,7 @@
         <!-- Service Row -->
         <div class="service-box mt-4">
             <div class="row text-center">
-                <div class="col">   
+                <div class="col">
                     <div class="service-item">
                         <i class="service-icon fa-solid fa-map-location-dot"></i>
                         <p>Hệ thống <span>5 cửa hàng </span>hàng có sẵn</p>
@@ -110,6 +113,64 @@
                 </div>
             </div>
         </div>
+
+        <!-- Featured Products -->
+        <div class="row my-3">
+            <h2 class="text-center text-white my-5 p-1">Sản phẩm nổi bật</h2>
+            @foreach (var sp in dsSPNB)
+            {
+                <div class="col-3 mb-3">
+                    <div class="card card-product card-item border-1">
+                        <img class="card-img product-img" src="~/Content/Images/@sp.HINHANH" />
+                        <div class="card-body">
+                            <p style="height: 80px;">@sp.TENSP</p>
+                            <p class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</p>
+                            <div class="text-end">
+                                <a class="text-decoration-none btn btn-secondary" href="/Home/ChiTietSanPham/?masp=@sp.MASP">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </main>
+
+<style>
+    .product-card {
+        background-color: #141414;
+        border: 1px solid #222;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .card-body {
+        position: relative;
+        z-index: 2;
+        color: white;
+    }
+
+    .card-item {
+        background: #1a1a1a;
+        border-color: #232323;
+        padding: 8px;
+        z-index: 2;
+    }
+
+    .card-item img {
+        background: #1a1a1a;
+        padding: 8px;
+        z-index: 2;
+    }
+    .product-img {
+        height: 260px;
+        width: 100%;
+        object-fit: contain; /* Hoặc cover tuỳ mày */
+        background-color: #1a1a1a;
+        padding: 10px;
+    }
+</style>
+
 

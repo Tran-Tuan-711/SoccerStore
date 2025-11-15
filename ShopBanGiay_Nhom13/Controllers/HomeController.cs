@@ -20,6 +20,12 @@ namespace ShopBanGiay_Nhom13.Controllers
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
 
+            ViewBag.spNB = csdl.SANPHAMNOIBAT
+                                        .Where(spnb => spnb.NGAYBD <= DateTime.Now && spnb.NGAYKT >= DateTime.Now)
+                                        .Select(spnb => spnb.SANPHAM)
+                                        .Distinct()
+                                        .ToList();
+
             return View();
         }
         public ActionResult SignIn()
@@ -33,6 +39,11 @@ namespace ShopBanGiay_Nhom13.Controllers
         {
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            ViewBag.spNB = csdl.SANPHAMNOIBAT
+                                        .Where(spnb => spnb.NGAYBD <= DateTime.Now && spnb.NGAYKT >= DateTime.Now)
+                                        .Select(spnb => spnb.SANPHAM)
+                                        .Distinct()
+                                        .ToList();
 
             return View();
         }
@@ -142,6 +153,14 @@ namespace ShopBanGiay_Nhom13.Controllers
 
             SANPHAM ctsp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == masp);
             return View(ctsp);
+        }
+        public ActionResult flashSale()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            List<SANPHAM> dsSale = csdl.SANPHAM.Where(sp => sp.MAKM != null).ToList();
+            return View(dsSale);
         }
     }
 }
