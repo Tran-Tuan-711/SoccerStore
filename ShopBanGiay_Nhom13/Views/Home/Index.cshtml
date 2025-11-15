@@ -2,31 +2,31 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
-
+<link href="~/Content/Site.css" rel="stylesheet" />
 <main>
     <div class="container">
         <!-- Banner Section -->
         <div class="row g-3 my-2">
-            <div class="col-5">
+            <div class="col-5 banner-left">
                 <div class="banner-card h-100">
                     <img src="~/Content/Images/banner1.jpg" alt="Nike boots">
                     <a href="@Url.Action("Giay", "Home")" class="btn-shop btn p-auto">SHOP NOW</a>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-3 banner-center">
                 <div class="banner-card h-100">
                     <img src="~/Content/Images/banner2.jpg" alt="Adidas shoes">
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 banner-right">
                 <div class="row g-3 h-100">
                     <div class="col-12 h-50">
-                        <div class="banner-card h-100">
+                        <div class="banner-card">
                             <img src="~/Content/Images/banner3.jpg" alt="Adidas shoes">
                         </div>
                     </div>
                     <div class="col-12 h-50">
-                        <div class="banner-card h-100">
+                        <div class="banner-card">
                             <img src="~/Content/Images/banner4.jpg" alt="Adidas Coral Blaze">
                         </div>
                     </div>
@@ -37,7 +37,7 @@
         <!-- Service Row -->
         <div class="service-box mt-4">
             <div class="row text-center">
-                <div class="col">
+                <div class="col">   
                     <div class="service-item">
                         <i class="service-icon fa-solid fa-map-location-dot"></i>
                         <p>Hệ thống <span>5 cửa hàng </span>hàng có sẵn</p>
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Featured List img -->
-        <div class="row">
+        <div class="row featured-section">
             <h2 class="text-center text-white my-5 p-1">Quan tâm hàng đầu</h2>
             <div class="col">
                 <div class="card card-featured">
