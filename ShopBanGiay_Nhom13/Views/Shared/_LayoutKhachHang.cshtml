@@ -3,6 +3,7 @@
 @{
     List<LOAISP> dsl = ViewBag.lsp as List<LOAISP>;
     List<THUONGHIEU> dsthuonghieu = ViewBag.thuonghieu as List<THUONGHIEU>;
+    var kh = Session["KHACHHANG"] as KHACHHANG;
 }
 
 
@@ -38,8 +39,16 @@
                 <div class="col-3">
                     <div class="d-flex justify-content-between gap-2">
                         <div class="my-1 w-75">
-                            <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignIn">Sign in</a>
-                            <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignUp">Sign up</a>
+                            @if (kh == null)
+                            {
+                                <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignIn">Sign in</a>
+                                <a class="text-decoration-none text-white btn btn-primary px-3" href="/Home/SignUp">Sign up</a>
+                            }
+                            else
+                            {
+                                <span class="text-white me-2">Xin chào, @kh.TENKH</span>
+                                <a class="text-decoration-none text-white btn btn-danger px-3" href="/Home/Logout">Đăng xuất</a>
+                            }
                         </div>
                         <a class="w-50" href="/Home/Index">
                             <i class="header-icon fa-solid fa-cart-shopping text-white"></i>

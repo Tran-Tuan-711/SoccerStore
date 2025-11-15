@@ -1,12 +1,14 @@
-﻿using System;
+﻿using ShopBanGiay_Nhom13.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
-using ShopBanGiay_Nhom13.Models;
+using System.Xml.Linq;
 
 namespace ShopBanGiay_Nhom13.Controllers
 {
@@ -26,16 +28,84 @@ namespace ShopBanGiay_Nhom13.Controllers
         {
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(string txtName, string txtPass)
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            var kh = csdl.KHACHHANG.FirstOrDefault(x => x.EMAIL == txtName && x.PASSWORD_KH == txtPass);
+
+            if (string.IsNullOrEmpty(txtName) ||
+                string.IsNullOrEmpty(txtPass))
+            {
+                ViewBag.Error = "Vui lòng nhập đầy đủ thông tin!";
+                return View();
+            }
+
+            if (kh == null || kh.PASSWORD_KH != txtPass)
+            {
+                ViewBag.Error = "Email hoặc mật khẩu không đúng!";
+                return View();
+            }
+
+            Session["KHACHHANG"] = kh;
+            return RedirectToAction("Index");
         }
         public ActionResult SignUp()
         {
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
-
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SignUp(string txtEmail, string txtPhone, string txtPass, string txtRepass)
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            if (string.IsNullOrEmpty(txtEmail) ||
+                string.IsNullOrEmpty(txtPhone) ||
+                string.IsNullOrEmpty(txtPass) ||
+                string.IsNullOrEmpty(txtRepass))
+            {
+                ViewBag.Error = "Vui lòng nhập đầy đủ thông tin!";
+                return View(); 
+            }
+            if (txtPass != txtRepass)
+            {
+                ViewBag.Error = "Mật khẩu không trùng khớp!";
+                return View();
+            }
+
+            // Tạo mã KH tự động
+            string makh = "KH" + (csdl.KHACHHANG.Count() + 1).ToString("000");
+
+            KHACHHANG kh = new KHACHHANG()
+            {
+                MAKH = makh,
+                EMAIL = txtEmail,
+                SODIENTHOAI = txtPhone,
+                PASSWORD_KH = txtPass,
+                TENKH = txtEmail,
+                ROLES = "user"
+            };
+
+            csdl.KHACHHANG.Add(kh);
+            csdl.SaveChanges();
+
+            Session["KHACHHANG"] = kh;
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Logout()
+        {
+            Session["KHACHHANG"] = null;
+            return RedirectToAction("Index");
+        }
+
         public ActionResult DanhMucSanPham()
         {
             return RedirectToAction("LocSanPham", new { phanLoai = "Giay", maLoai = (string)null });

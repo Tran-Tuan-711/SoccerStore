@@ -4,16 +4,16 @@
 }
 
 <div class="container d-flex justify-content-center align-content-center">
-    <form action="#" method="post" class="form-signin bg-success p-5 rounded-4" style="width: 400px;">
+    <form action="/Home/SignIn" method="post" class="form-signin bg-success p-5 rounded-4" style="width: 400px;">
         <h3 class="text-white text-center my-3">Đăng nhập</h3>
         <div class="mb-2">
             <label class="text-white text-start mb-2 my-2 frm-label">Email</label>
-            <input class="form-control w-100 d-inline-block" type="text" name="txtName" placeholder="Email" />
+            <input class="form-control w-100 d-inline-block" type="text" name="txtName" placeholder="Email" required/>
         </div>
 
         <div class="mb-2">
             <label class="text-white text-start mb-2 my-2 frm-label">Password</label>
-            <input class="form-control w-100 d-inline-block" type="password" name="txtPass" placeholder="Password" />
+            <input class="form-control w-100 d-inline-block" type="password" name="txtPass" placeholder="Password" required/>
         </div>
 
         <div class="text-end">
