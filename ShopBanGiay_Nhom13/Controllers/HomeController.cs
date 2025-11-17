@@ -209,7 +209,6 @@ namespace ShopBanGiay_Nhom13.Controllers
                 TempData["Error"] = "Lỗi khi xóa sản phẩm: " + ex.Message;
             }
             return RedirectToAction("Dashboard");
-            return RedirectToAction("Product");
         }
 
     }
