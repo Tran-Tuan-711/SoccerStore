@@ -145,6 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CHITIETHOADON.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -6133,6 +6134,7 @@
     <Content Include="Views\Home\PhuKien.cshtml" />
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
     <Content Include="Views\Home\flashSale.cshtml" />
+    <Content Include="Views\Home\XemGio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

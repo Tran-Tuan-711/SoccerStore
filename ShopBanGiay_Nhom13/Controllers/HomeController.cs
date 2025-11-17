@@ -162,5 +162,169 @@ namespace ShopBanGiay_Nhom13.Controllers
             List<SANPHAM> dsSale = csdl.SANPHAM.Where(sp => sp.MAKM != null).ToList();
             return View(dsSale);
         }
+        public List<CartItem> GetCart()
+        {
+            if (Session["cart"] == null)
+                Session["cart"] = new List<CartItem>();
+
+            return Session["cart"] as List<CartItem>;
+        }
+        public ActionResult AddToCart(string masp, int quantity = 1)
+        {
+            var sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == masp);
+            if (sp == null) return RedirectToAction("Index");
+
+            var cart = GetCart();
+            var item = cart.FirstOrDefault(x => x.MaSP == masp);
+
+            if (item == null)
+            {
+                cart.Add(new CartItem
+                {
+                    MaSP = sp.MASP,
+                    TenSP = sp.TENSP,
+                    Gia = (decimal)sp.GIA,
+                    SoLuong = quantity
+                });
+            }
+            else
+            {
+                item.SoLuong += quantity;
+            }
+
+            return RedirectToAction("XemGio");
+        }
+
+        public ActionResult XemGio()
+        {
+            var cart = GetCart();
+            ViewBag.TongTien = cart.Sum(x => x.ThanhTien);
+            return View(cart);
+        }
+        [HttpPost]
+        public ActionResult CapNhat(string masp, int soluong)
+        {
+            var cart = GetCart();
+            var item = cart.FirstOrDefault(x => x.MaSP == masp);
+
+            if (item != null)
+            {
+                item.SoLuong = soluong;
+            }
+
+            return RedirectToAction("XemGio");
+        }
+        public ActionResult XoaSP(string masp)
+        {
+            var cart = GetCart();
+            var item = cart.FirstOrDefault(x => x.MaSP == masp);
+
+            if (item != null)
+            {
+                cart.Remove(item);
+            }
+
+            return RedirectToAction("XemGio");
+        }
+        public ActionResult ThanhToan()
+        {
+            var cart = GetCart();
+            if (cart.Count == 0)
+                return RedirectToAction("XemGio");
+
+            ViewBag.TongTien = cart.Sum(x => x.ThanhTien);
+            return View(cart);
+        }
+        [HttpPost]
+        public ActionResult LuuHoaDon(string makh)
+        {
+            var giohang = csdl.GIOHANG.Where(g => g.MAKH == makh).ToList();
+            if (giohang.Count == 0)
+                return RedirectToAction("Index");
+
+            // Tạo hóa đơn
+            HOADON hd = new HOADON
+            {
+                MAHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss"),
+                MAKH = makh,
+                NGAYTAO = DateTime.Now,
+                NGAYHENGIAO = DateTime.Now.AddDays(3),
+                NGAYTHANHTOAN = DateTime.Now,
+                TONGTIEN = 0m
+            };
+
+            
+            decimal tong = 0;
+            foreach (var item in giohang)
+            {
+                var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
+                if (sp != null)
+                {
+                    decimal gia = sp.GIA ?? 0m;              // giá sản phẩm
+                    int soluong = item.SOLUONG ?? 0;        // số lượng, đảm bảo không null
+                    tong += gia * soluong;
+                }
+            }
+            hd.TONGTIEN = tong;
+
+            // Lưu hóa đơn
+            csdl.HOADON.Add(hd);
+            try
+            {
+                csdl.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string loi = ex.InnerException?.Message ?? ex.Message;
+                throw new Exception("Lỗi khi lưu hóa đơn: " + loi);
+            }
+
+            // Thêm chi tiết hóa đơn
+            foreach (var item in giohang)
+            {
+                CHITIETHOADON cthd = new CHITIETHOADON
+                {
+                    MAHD = hd.MAHD,
+                    MASP = item.MASP,
+                    SOLUONG = item.SOLUONG
+                };
+                csdl.CHITIETHOADON.Add(cthd);
+            }
+
+            try
+            {
+                csdl.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string loi = ex.InnerException?.Message ?? ex.Message;
+                throw new Exception("Lỗi khi lưu chi tiết hóa đơn: " + loi);
+            }
+
+            // Xóa giỏ hàng 
+            foreach (var gh in giohang)
+                csdl.GIOHANG.Remove(gh);
+
+            try
+            {
+                csdl.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string loi = ex.InnerException?.Message ?? ex.Message;
+                throw new Exception("Lỗi khi xóa giỏ hàng: " + loi);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult ThanhCong(int mahd)
+        {
+            ViewBag.ma = mahd;
+            return View();
+        }
+
+
     }
 }

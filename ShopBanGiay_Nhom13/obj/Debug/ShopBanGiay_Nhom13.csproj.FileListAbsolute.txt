@@ -74,3 +74,41 @@ E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.AssemblyReference.cache
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.CoreCompileInputs.cache
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll.config
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.pdb
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Optimization.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Providers.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\WebGrease.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.dll
+C:\Users\Admin\Downloads\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.pdb

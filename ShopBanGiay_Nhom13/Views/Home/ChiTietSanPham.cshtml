@@ -65,14 +65,14 @@
             </div>
 
             <p>@Model.MOTA</p>
-            <form action="#" method="post">
+            <form action="@Url.Action("AddToCart", "Home", new { masp = Model.MASP })" method="post">
                 <!-- Chọn size -->
                 <div class="my-3">
                     <strong>Chọn size:</strong><br />
                     @*@foreach (var size in Model.Sizes)
-                        {
-                            <button class="btn btn-outline-light m-1">@size</button>
-                        }*@
+            {
+                <button class="btn btn-outline-light m-1">@size</button>
+            }*@
                     <button class="btn btn-outline-light m-1">33</button>
                     <button class="btn btn-outline-light m-1">34</button>
                     <button class="btn btn-outline-light m-1">35.5</button>
@@ -87,10 +87,10 @@
 
                 <!-- Nút mua -->
                 @*action="@Url.Action("ThemVaoGio", "GioHang", new { id = Model.MASP })"*@
-            
-                    <button type="submit" class="btn-buy btn btn-warning w-75 fw-bold text-white">
-                        <i class="fa-cart-shopping fa-solid text-white"></i> THÊM VÀO GIỎ HÀNG
-                    </button>
+
+                <button type="submit" class="btn-buy btn btn-warning w-75 fw-bold text-white">
+                    <i class="fa-cart-shopping fa-solid text-white"></i> THÊM VÀO GIỎ HÀNG
+                </button>
             </form>
         </div>
     </div>
