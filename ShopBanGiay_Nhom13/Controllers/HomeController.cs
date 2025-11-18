@@ -324,5 +324,39 @@ namespace ShopBanGiay_Nhom13.Controllers
             model.DanhSachSP = result;
             return View("DanhMucSanPham", model);
         }
+        public ActionResult ChinhSachBaoMat()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            return View();
+        }
+        public ActionResult ChinhSachBaoHanh()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            return View();
+        }
+        public ActionResult ChinhSachDoiTra()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            return View();
+        }
+        public ActionResult HuongDanMuaHang()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            return View();
+        }
+        public ActionResult HuongDanChonSize()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            return View();
+        }
+
     }
 }
