@@ -245,32 +245,33 @@ namespace ShopBanGiay_Nhom13.Controllers
             // Tạo hóa đơn
             HOADON hd = new HOADON
             {
-                MAHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss"),
+                MAHD = "HD4",
                 MAKH = makh,
                 NGAYTAO = DateTime.Now,
                 NGAYHENGIAO = DateTime.Now.AddDays(3),
                 NGAYTHANHTOAN = DateTime.Now,
-                TONGTIEN = 0m
+                TONGTIEN = 0
             };
 
-            
-            decimal tong = 0;
-            foreach (var item in giohang)
-            {
-                var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
-                if (sp != null)
-                {
-                    decimal gia = sp.GIA ?? 0m;              // giá sản phẩm
-                    int soluong = item.SOLUONG ?? 0;        // số lượng, đảm bảo không null
-                    tong += gia * soluong;
-                }
-            }
-            hd.TONGTIEN = tong;
+
+            //decimal tong = 0;
+            //foreach (var item in giohang)
+            //{
+            //    var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
+            //    if (sp != null)
+            //    {
+            //        decimal gia = sp.GIA ?? 0m;              // giá sản phẩm
+            //        int soluong = item.SOLUONG ?? 0;        // số lượng, đảm bảo không null
+            //        tong += gia * soluong;
+            //    }
+            //}
+            //hd.TONGTIEN = tong;
 
             // Lưu hóa đơn
-            csdl.HOADON.Add(hd);
             try
             {
+                csdl.HOADON.Add(hd);
+
                 csdl.SaveChanges();
             }
             catch (Exception ex)
@@ -279,41 +280,41 @@ namespace ShopBanGiay_Nhom13.Controllers
                 throw new Exception("Lỗi khi lưu hóa đơn: " + loi);
             }
 
-            // Thêm chi tiết hóa đơn
-            foreach (var item in giohang)
-            {
-                CHITIETHOADON cthd = new CHITIETHOADON
-                {
-                    MAHD = hd.MAHD,
-                    MASP = item.MASP,
-                    SOLUONG = item.SOLUONG
-                };
-                csdl.CHITIETHOADON.Add(cthd);
-            }
+            //// Thêm chi tiết hóa đơn
+            //foreach (var item in giohang)
+            //{
+            //    CHITIETHOADON cthd = new CHITIETHOADON
+            //    {
+            //        MAHD = hd.MAHD,
+            //        MASP = item.MASP,
+            //        SOLUONG = item.SOLUONG
+            //    };
+            //    csdl.CHITIETHOADON.Add(cthd);
+            //}
 
-            try
-            {
-                csdl.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                string loi = ex.InnerException?.Message ?? ex.Message;
-                throw new Exception("Lỗi khi lưu chi tiết hóa đơn: " + loi);
-            }
+            //try
+            //{
+            //    csdl.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+            //    string loi = ex.InnerException?.Message ?? ex.Message;
+            //    throw new Exception("Lỗi khi lưu chi tiết hóa đơn: " + loi);
+            //}
 
-            // Xóa giỏ hàng 
-            foreach (var gh in giohang)
-                csdl.GIOHANG.Remove(gh);
+            //// Xóa giỏ hàng 
+            //foreach (var gh in giohang)
+            //    csdl.GIOHANG.Remove(gh);
 
-            try
-            {
-                csdl.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                string loi = ex.InnerException?.Message ?? ex.Message;
-                throw new Exception("Lỗi khi xóa giỏ hàng: " + loi);
-            }
+            //try
+            //{
+            //    csdl.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+            //    string loi = ex.InnerException?.Message ?? ex.Message;
+            //    throw new Exception("Lỗi khi xóa giỏ hàng: " + loi);
+            //}
 
             return RedirectToAction("Index");
         }

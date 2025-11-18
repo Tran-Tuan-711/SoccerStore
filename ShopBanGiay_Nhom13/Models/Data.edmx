@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SOCCERSTOREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SOCCERSTOREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHITIETKHUYENMAI">
           <Key>
             <PropertyRef Name="MAKM" />
@@ -40,7 +40,6 @@
           <Property Name="NGAYHENGIAO" Type="date" />
           <Property Name="TONGTIEN" Type="decimal" Precision="12" Scale="0" />
           <Property Name="NGAYTHANHTOAN" Type="date" />
-          <Property Name="MASP" Type="varchar" MaxLength="10" />
           <Property Name="MAKH" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="KHACHHANG">
@@ -72,15 +71,6 @@
           <Property Name="TENL" Type="nvarchar" MaxLength="100" />
           <Property Name="MAL_CHA" Type="varchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="PHUKIEN">
-          <Key>
-            <PropertyRef Name="MAPK" />
-          </Key>
-          <Property Name="MAPK" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TENPK" Type="nvarchar" MaxLength="50" />
-          <Property Name="MASP" Type="varchar" MaxLength="10" />
-          <Property Name="MAL" Type="varchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
@@ -103,16 +93,6 @@
           <Property Name="MASP" Type="varchar" MaxLength="10" />
           <Property Name="NGAYBD" Type="date" />
           <Property Name="NGAYKT" Type="date" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="THUONGHIEU">
           <Key>
@@ -145,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MAHD__656C112C">
+        <Association Name="FK__CHITIETHOA__MAHD__619B8048">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MASP__66603565">
+        <Association Name="FK__CHITIETHOA__MASP__628FA481">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -169,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GIOHANG__MAKH__693CA210">
+        <Association Name="FK__GIOHANG__MAKH__656C112C">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -181,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GIOHANG__MASP__6A30C649">
+        <Association Name="FK__GIOHANG__MASP__66603565">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,7 +173,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MAKH__628FA481">
+        <Association Name="FK__HOADON__MAKH__5EBF139D">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,18 +182,6 @@
             </Principal>
             <Dependent Role="HOADON">
               <PropertyRef Name="MAKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__MASP__619B8048">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MASP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -226,30 +194,6 @@
             </Principal>
             <Dependent Role="LOAISP1">
               <PropertyRef Name="MAL_CHA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PHUKIEN__MAL__5BE2A6F2">
-          <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
-          <End Role="PHUKIEN" Type="Self.PHUKIEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOAISP">
-              <PropertyRef Name="MAL" />
-            </Principal>
-            <Dependent Role="PHUKIEN">
-              <PropertyRef Name="MAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PHUKIEN__MASP__5AEE82B9">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
-          <End Role="PHUKIEN" Type="Self.PHUKIEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="PHUKIEN">
-              <PropertyRef Name="MASP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -289,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SANPHAMNOI__MASP__5EBF139D">
+        <Association Name="FK__SANPHAMNOI__MASP__5AEE82B9">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
           <End Role="SANPHAMNOIBAT" Type="Self.SANPHAMNOIBAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -301,37 +245,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SOCCERSTOREModelStoreContainer">
           <EntitySet Name="CHITIETKHUYENMAI" EntityType="Self.CHITIETKHUYENMAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHITIETHOADON" EntityType="Self.CHITIETHOADON" Schema="dbo" store:Type="Tables" />
@@ -340,10 +253,8 @@
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAISP" EntityType="Self.LOAISP" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PHUKIEN" EntityType="Self.PHUKIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAMNOIBAT" EntityType="Self.SANPHAMNOIBAT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUONGHIEU" EntityType="Self.THUONGHIEU" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CHITIETKHU__MAKM__571DF1D5" Association="Self.FK__CHITIETKHU__MAKM__571DF1D5">
             <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
@@ -353,41 +264,29 @@
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETKHUYENMAI" EntitySet="CHITIETKHUYENMAI" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MAHD__656C112C" Association="Self.FK__CHITIETHOA__MAHD__656C112C">
+          <AssociationSet Name="FK__CHITIETHOA__MAHD__619B8048" Association="Self.FK__CHITIETHOA__MAHD__619B8048">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MASP__66603565" Association="Self.FK__CHITIETHOA__MASP__66603565">
+          <AssociationSet Name="FK__CHITIETHOA__MASP__628FA481" Association="Self.FK__CHITIETHOA__MASP__628FA481">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__GIOHANG__MAKH__693CA210" Association="Self.FK__GIOHANG__MAKH__693CA210">
+          <AssociationSet Name="FK__GIOHANG__MAKH__656C112C" Association="Self.FK__GIOHANG__MAKH__656C112C">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="GIOHANG" EntitySet="GIOHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__GIOHANG__MASP__6A30C649" Association="Self.FK__GIOHANG__MASP__6A30C649">
+          <AssociationSet Name="FK__GIOHANG__MASP__66603565" Association="Self.FK__GIOHANG__MASP__66603565">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="GIOHANG" EntitySet="GIOHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MAKH__628FA481" Association="Self.FK__HOADON__MAKH__628FA481">
+          <AssociationSet Name="FK__HOADON__MAKH__5EBF139D" Association="Self.FK__HOADON__MAKH__5EBF139D">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="HOADON" EntitySet="HOADON" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MASP__619B8048" Association="Self.FK__HOADON__MASP__619B8048">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
           <AssociationSet Name="FK__LOAISP__MAL_CHA__4D94879B" Association="Self.FK__LOAISP__MAL_CHA__4D94879B">
             <End Role="LOAISP" EntitySet="LOAISP" />
             <End Role="LOAISP1" EntitySet="LOAISP" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PHUKIEN__MAL__5BE2A6F2" Association="Self.FK__PHUKIEN__MAL__5BE2A6F2">
-            <End Role="LOAISP" EntitySet="LOAISP" />
-            <End Role="PHUKIEN" EntitySet="PHUKIEN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PHUKIEN__MASP__5AEE82B9" Association="Self.FK__PHUKIEN__MASP__5AEE82B9">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-            <End Role="PHUKIEN" EntitySet="PHUKIEN" />
           </AssociationSet>
           <AssociationSet Name="FK__SANPHAM__MAKM__5441852A" Association="Self.FK__SANPHAM__MAKM__5441852A">
             <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
@@ -401,13 +300,12 @@
             <End Role="THUONGHIEU" EntitySet="THUONGHIEU" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
           </AssociationSet>
-          <AssociationSet Name="FK__SANPHAMNOI__MASP__5EBF139D" Association="Self.FK__SANPHAMNOI__MASP__5EBF139D">
+          <AssociationSet Name="FK__SANPHAMNOI__MASP__5AEE82B9" Association="Self.FK__SANPHAMNOI__MASP__5AEE82B9">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="SANPHAMNOIBAT" EntitySet="SANPHAMNOIBAT" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOCCERSTOREModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -419,8 +317,8 @@
           <Property Name="MAHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHOA__MAHD__656C112C" FromRole="CHITIETHOADON" ToRole="HOADON" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHITIETHOA__MASP__66603565" FromRole="CHITIETHOADON" ToRole="SANPHAM" />
+          <NavigationProperty Name="HOADON" Relationship="SOCCERSTOREModel.FK__CHITIETHOA__MAHD__619B8048" FromRole="CHITIETHOADON" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -433,21 +331,6 @@
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__GIOHANG__MAKH__693CA210" FromRole="GIOHANG" ToRole="KHACHHANG" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__GIOHANG__MASP__6A30C649" FromRole="GIOHANG" ToRole="SANPHAM" />
         </EntityType>
-        <EntityType Name="HOADON">
-          <Key>
-            <PropertyRef Name="MAHD" />
-          </Key>
-          <Property Name="MAHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
-          <Property Name="NGAYHENGIAO" Type="DateTime" Precision="0" />
-          <Property Name="TONGTIEN" Type="Decimal" Precision="12" Scale="0" />
-          <Property Name="NGAYTHANHTOAN" Type="DateTime" Precision="0" />
-          <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CHITIETHOADON" Relationship="Self.FK__CHITIETHOA__MAHD__656C112C" FromRole="HOADON" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__MAKH__628FA481" FromRole="HOADON" ToRole="KHACHHANG" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__HOADON__MASP__619B8048" FromRole="HOADON" ToRole="SANPHAM" />
-        </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
             <PropertyRef Name="MAKH" />
@@ -459,7 +342,7 @@
           <Property Name="PASSWORD_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ROLES" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GIOHANG" Relationship="Self.FK__GIOHANG__MAKH__693CA210" FromRole="KHACHHANG" ToRole="GIOHANG" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__HOADON__MAKH__628FA481" FromRole="KHACHHANG" ToRole="HOADON" />
+          <NavigationProperty Name="HOADON" Relationship="SOCCERSTOREModel.FK__HOADON__MAKH__5EBF139D" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="KHUYENMAI">
           <Key>
@@ -511,7 +394,6 @@
           <Property Name="MAKM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CHITIETHOADON" Relationship="Self.FK__CHITIETHOA__MASP__66603565" FromRole="SANPHAM" ToRole="CHITIETHOADON" />
           <NavigationProperty Name="GIOHANG" Relationship="Self.FK__GIOHANG__MASP__6A30C649" FromRole="SANPHAM" ToRole="GIOHANG" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__HOADON__MASP__619B8048" FromRole="SANPHAM" ToRole="HOADON" />
           <NavigationProperty Name="KHUYENMAI" Relationship="Self.FK__SANPHAM__MAKM__5441852A" FromRole="SANPHAM" ToRole="KHUYENMAI" />
           <NavigationProperty Name="LOAISP" Relationship="Self.FK__SANPHAM__MAL__534D60F1" FromRole="SANPHAM" ToRole="LOAISP" />
           <NavigationProperty Name="PHUKIEN" Relationship="Self.FK__PHUKIEN__MASP__5AEE82B9" FromRole="SANPHAM" ToRole="PHUKIEN" />
@@ -547,18 +429,6 @@
           <Property Name="TENTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__SANPHAM__MATH__52593CB8" FromRole="THUONGHIEU" ToRole="SANPHAM" />
         </EntityType>
-        <Association Name="FK__CHITIETHOA__MAHD__656C112C">
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
-          <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADON">
-              <PropertyRef Name="MAHD" />
-            </Principal>
-            <Dependent Role="CHITIETHOADON">
-              <PropertyRef Name="MAHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CHITIETHOA__MASP__66603565">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
@@ -591,30 +461,6 @@
               <PropertyRef Name="MASP" />
             </Principal>
             <Dependent Role="GIOHANG">
-              <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__MAKH__628FA481">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="MAKH" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="MAKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__MASP__619B8048">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SANPHAM">
-              <PropertyRef Name="MASP" />
-            </Principal>
-            <Dependent Role="HOADON">
               <PropertyRef Name="MASP" />
             </Dependent>
           </ReferentialConstraint>
@@ -710,7 +556,6 @@
         <EntityContainer Name="SoccerStoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CHITIETHOADON" EntityType="Self.CHITIETHOADON" />
           <EntitySet Name="GIOHANG" EntityType="Self.GIOHANG" />
-          <EntitySet Name="HOADON" EntityType="Self.HOADON" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" />
           <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" />
           <EntitySet Name="LOAISP" EntityType="Self.LOAISP" />
@@ -719,10 +564,6 @@
           <EntitySet Name="SANPHAMNOIBAT" EntityType="Self.SANPHAMNOIBAT" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="THUONGHIEU" EntityType="Self.THUONGHIEU" />
-          <AssociationSet Name="FK__CHITIETHOA__MAHD__656C112C" Association="Self.FK__CHITIETHOA__MAHD__656C112C">
-            <End Role="HOADON" EntitySet="HOADON" />
-            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
-          </AssociationSet>
           <AssociationSet Name="FK__CHITIETHOA__MASP__66603565" Association="Self.FK__CHITIETHOA__MASP__66603565">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
@@ -734,14 +575,6 @@
           <AssociationSet Name="FK__GIOHANG__MASP__6A30C649" Association="Self.FK__GIOHANG__MASP__6A30C649">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="GIOHANG" EntitySet="GIOHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MAKH__628FA481" Association="Self.FK__HOADON__MAKH__628FA481">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="HOADON" EntitySet="HOADON" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MASP__619B8048" Association="Self.FK__HOADON__MASP__619B8048">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-            <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
           <AssociationSet Name="FK__SANPHAM__MAKM__5441852A" Association="Self.FK__SANPHAM__MAKM__5441852A">
             <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
@@ -805,6 +638,15 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="HOADON" EntityType="SOCCERSTOREModel.HOADON" />
+          <AssociationSet Name="FK__CHITIETHOA__MAHD__619B8048" Association="SOCCERSTOREModel.FK__CHITIETHOA__MAHD__619B8048">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__5EBF139D" Association="SOCCERSTOREModel.FK__HOADON__MAKH__5EBF139D">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -817,6 +659,43 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
+          <Property Name="NGAYHENGIAO" Type="DateTime" Precision="0" />
+          <Property Name="TONGTIEN" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="NGAYTHANHTOAN" Type="DateTime" Precision="0" />
+          <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHITIETHOADON" Relationship="SOCCERSTOREModel.FK__CHITIETHOA__MAHD__619B8048" FromRole="HOADON" ToRole="CHITIETHOADON" />
+          <NavigationProperty Name="KHACHHANG" Relationship="SOCCERSTOREModel.FK__HOADON__MAKH__5EBF139D" FromRole="HOADON" ToRole="KHACHHANG" />
+        </EntityType>
+        <Association Name="FK__CHITIETHOA__MAHD__619B8048">
+          <End Type="SOCCERSTOREModel.HOADON" Role="HOADON" Multiplicity="1" />
+          <End Type="SOCCERSTOREModel.CHITIETHOADON" Role="CHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHD" />
+            </Principal>
+            <Dependent Role="CHITIETHOADON">
+              <PropertyRef Name="MAHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MAKH__5EBF139D">
+          <End Type="SOCCERSTOREModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+          <End Type="SOCCERSTOREModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -838,19 +717,6 @@
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HOADON">
-            <EntityTypeMapping TypeName="SOCCERSTOREModel.HOADON">
-              <MappingFragment StoreEntitySet="HOADON">
-                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
-                <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
-                <ScalarProperty Name="NGAYHENGIAO" ColumnName="NGAYHENGIAO" />
-                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-                <ScalarProperty Name="NGAYTHANHTOAN" ColumnName="NGAYTHANHTOAN" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -886,16 +752,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHUKIEN">
-            <EntityTypeMapping TypeName="SOCCERSTOREModel.PHUKIEN">
-              <MappingFragment StoreEntitySet="PHUKIEN">
-                <ScalarProperty Name="MAPK" ColumnName="MAPK" />
-                <ScalarProperty Name="TENPK" ColumnName="TENPK" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="MAL" ColumnName="MAL" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SANPHAM">
             <EntityTypeMapping TypeName="SOCCERSTOREModel.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
@@ -921,17 +777,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SOCCERSTOREModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="THUONGHIEU">
             <EntityTypeMapping TypeName="SOCCERSTOREModel.THUONGHIEU">
               <MappingFragment StoreEntitySet="THUONGHIEU">
@@ -948,31 +793,19 @@
               <ScalarProperty Name="MASP" ColumnName="MASP" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SOCCERSTOREModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SOCCERSTOREModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SOCCERSTOREModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SOCCERSTOREModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SOCCERSTOREModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SOCCERSTOREModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SOCCERSTOREModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SOCCERSTOREModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SOCCERSTOREModel.Store.sp_upgraddiagrams" />
-        </EntityContainerMapping>
+          <EntitySetMapping Name="HOADON">
+            <EntityTypeMapping TypeName="SOCCERSTOREModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NGAYTHANHTOAN" ColumnName="NGAYTHANHTOAN" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="NGAYHENGIAO" ColumnName="NGAYHENGIAO" />
+                <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

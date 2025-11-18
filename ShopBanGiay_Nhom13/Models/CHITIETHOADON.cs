@@ -18,7 +18,7 @@ namespace ShopBanGiay_Nhom13.Models
         public string MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
     
-        public virtual HOADON HOADON { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
+        public virtual HOADON HOADON { get; set; }
     }
 }
