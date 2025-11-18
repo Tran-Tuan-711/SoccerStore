@@ -1,5 +1,20 @@
-﻿@{
-    ViewBag.Title = Model.PhanLoai == "PhuKien" ? "Phụ Kiện" : "Giày bóng đá";
+﻿﻿@{
+    if (Model.PhanLoai == "PhuKien")
+    {
+        ViewBag.Title = "Phụ Kiện";
+    }
+    else if (Model.PhanLoai == "ThuongHieu")
+    {
+        ViewBag.Title = "Thương Hiệu";
+    }
+    else if (Model.PhanLoai == "TimKiem")
+    {
+        ViewBag.Title = "Kết quả tìm kiếm";
+    }
+    else
+    {
+        ViewBag.Title = "Giày bóng đá";
+    }
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 @using PagedList
@@ -27,7 +42,7 @@
                         foreach (LOAISP lsp in Model.DanhSachLoaiSP)
                         {
 
-                            if (lsp.TENL != "Phụ kiện")
+                            if (lsp.TENL != "Phụ kiện" && @ViewBag.math == null)
                             {
                                 @*--Foreach Lay ten danh muc san pham--*@
                                 <a href="/Home/LocSanPham/?MAL=@lsp.MAL"
@@ -35,10 +50,16 @@
                                     <label class="form-check-label text-white-50 mb-2 mx-4 d-block" style="font-size: 16px; font-weight: 500;">@lsp.TENL</label>
                                 </a>
                             }
+                            else if (lsp.TENL != "Phụ kiện" && @ViewBag.math != null)
+                            {
+                                <a href="/Home/LocSanPham/?MAL=@lsp.MAL&math=@ViewBag.math"
+                                   class="text-decoration-none">
+                                    <label class="form-check-label text-white-50 mb-2 mx-4 d-block" style="font-size: 16px; font-weight: 500;">@lsp.TENL</label>
+                                </a>
+                            }
 
                         }
                     }
-
                 </div>
 
                 <div class="sidebar my-4">
@@ -58,15 +79,20 @@
                             <button class="filter-btn flex-fill">Size</button>
                         </div>
                     </div>*@
-
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-warning text-dark my-3" role="alert">
+                        <strong>Lỗi:</strong> @ViewBag.Error
+                    </div>
+                }
                 @if (Model.DanhSachSP != null)
                 {
                     <div class="row my-3">
                         @foreach (SANPHAM sp in Model.DanhSachSP)
                         {
                             <div class="col-4 mb-3">
-                                <div class="card cardx card-item border-1">
-                                    <img class="card-img" src="~/Content/Images/@sp.HINHANH" />
+                                <div class="card card-product card-item border-1">
+                                    <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;" />
                                     <div class="card-body">
                                         <p style="height: 80px;">@sp.TENSP</p>
                                         <p class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</p>
@@ -121,9 +147,9 @@
         padding: 20px;
     }
 
-    .sidebar h5 {
-        padding: 20px 16px;
-    }
+        .sidebar h5 {
+            padding: 20px 16px;
+        }
 
     .filter-box {
         background-color: #1c1c1c;
@@ -142,9 +168,9 @@
         transition: all 0.2s;
     }
 
-    .filter-btn:hover {
-        transform: scale(1.1);
-    }
+        .filter-btn:hover {
+            transform: scale(1.1);
+        }
 
     .product-card {
         background-color: #141414;
@@ -154,9 +180,10 @@
         transition: all 0.3s ease;
         height: 100%;
     }
+
     .card-body {
-        position: relative; /* Quan trọng: z-index chỉ hoạt động với position khác 'static' */
-        z-index: 2; /* Đặt chỉ số xếp chồng cao hơn 1 */
+        position: relative;
+        z-index: 2;
         color: white;
     }
 
@@ -167,10 +194,9 @@
         z-index: 2;
     }
 
-    .card-item img {
-        padding: 8px;
-        z-index: 2;
-    }
-    
-
+        .card-item img {
+            background: #1a1a1a;
+            padding: 8px;
+            z-index: 2;
+        }
 </style>
