@@ -1,18 +1,16 @@
 ﻿@{
-    ViewBag.Title = "SignIn";
+    ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 
 <div class="container d-flex justify-content-center align-content-center">
     <form action="/Home/SignIn" method="post" class="form-signin bg-success p-5 rounded-4" style="width: 400px;">
-        <h3 class="text-white text-center my-3">Đăng nhập</h3>
-        <div class="mb-2">
-            <label class="text-white text-start mb-2 my-2 frm-label">Email</label>
+        <h3 class="text-white text-center my-3 mb-5">Đăng nhập</h3>
+        <div class="mb-2 mt-4">
             <input class="form-control w-100 d-inline-block" type="text" name="txtName" placeholder="Email" required/>
         </div>
 
-        <div class="mb-2">
-            <label class="text-white text-start mb-2 my-2 frm-label">Password</label>
+        <div class="mb-2 mt-4">
             <input class="form-control w-100 d-inline-block" type="password" name="txtPass" placeholder="Password" required/>
         </div>
 
@@ -38,7 +36,7 @@
             border-radius: 30px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             min-height: 77vh;
-            width: 80vh !important;
+            width: 50vh !important;
         }
 
     .frm-label {

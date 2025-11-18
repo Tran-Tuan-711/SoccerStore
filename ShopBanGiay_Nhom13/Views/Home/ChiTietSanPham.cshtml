@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "ChiTietSanPham";
+    ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 @using ShopBanGiay_Nhom13.Models;
@@ -13,11 +13,12 @@
                 @if (Model.MAKM != null)
                 {
                     <span class="badge bg-danger position-absolute top-0 start-0 w-25">-@Model.KHUYENMAI.PHANTRAMGIAM%</span>
-
+                    <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid" style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden" />
                 }
-
-                <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid" style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden" />
-                <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid"  style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden"/>
+                else
+                {
+                    <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid" style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden" />
+                }
             </div>
 
             <!-- Thông tin hỗ trợ -->

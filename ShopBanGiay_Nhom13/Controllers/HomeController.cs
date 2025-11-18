@@ -27,7 +27,6 @@ namespace ShopBanGiay_Nhom13.Controllers
                                         .Select(spnb => spnb.SANPHAM)
                                         .Distinct()
                                         .ToList();
-
             return View();
         }
         public ActionResult SignIn()
@@ -55,6 +54,7 @@ namespace ShopBanGiay_Nhom13.Controllers
                 ViewBag.Error = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
+            //if (kh.ROLES == "Admin") return RedirectToAction("Dashboard");
 
             Session["KHACHHANG"] = kh;
             return RedirectToAction("Index");
@@ -140,24 +140,6 @@ namespace ShopBanGiay_Nhom13.Controllers
                     DanhSachLoaiSP = dsLoaiCon,
                     PhanLoai = "ThuongHieu",
                     MaLoaiHienTai = null
-
-                List<SANPHAM> dsth = csdl.SANPHAM.Where(x => x.THUONGHIEU.MATH == math).ToList();
-
-                var listMaLoaiLienQuan = dsth.Select(sp => sp.MAL).Distinct().ToList();
-
-                var dsLoaiCon = csdl.LOAISP
-                                      .Where(lsp => listMaLoaiLienQuan.Contains(lsp.MAL))
-                                      .OrderBy(lsp => lsp.MAL_CHA)
-                                      .ToList();
-
-
-                var model = new DanhMucViewModel
-                {
-                    DanhSachSP = dssp,
-                    DanhSachLoaiSP = dsLoaiCon,
-                    PhanLoai = "ThuongHieu",
-                    MaLoaiHienTai = null
-
                 };
                 ViewBag.math = math;
                 return View("DanhMucSanPham", model);
@@ -271,52 +253,52 @@ namespace ShopBanGiay_Nhom13.Controllers
         }
         //public ActionResult Dashboard()
         //{
-        //    var kho = csdl.SANPHAM.Select(s => new Kho
-        //    {
-        //        MASP = s.MASP,
-        //        TENSP = s.TENSP,
-        //        HINHANH = s.HINHANH,
-        //        SOLUONG = s.SOLUONG ?? 0,
-        //        GIA = s.GIA ?? 0,
-        //        MOTA = s.MOTA
-        //    }).ToList();
+        //    //var kho = csdl.SANPHAM.Select(s => new Kho
+        //    //{
+        //    //    MASP = s.MASP,
+        //    //    TENSP = s.TENSP,
+        //    //    HINHANH = s.HINHANH,
+        //    //    SOLUONG = s.SOLUONG ?? 0,
+        //    //    GIA = s.GIA ?? 0,
+        //    //    MOTA = s.MOTA
+        //    //}).ToList();
 
         //    ViewBag.Categories = csdl.LOAISP
         //        .Select(l => l.TENL)
         //        .Distinct()
         //        .ToList();
 
-        //    return View(kho);
+        //    return View();
         //}
-        //[HttpPost]
-        //public ActionResult Delete(string id)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(id))
-        //        {
-        //            TempData["Error"] = "Không xác định được sản phẩm cần xóa.";
-        //            return RedirectToAction("Dashboard");
-        //        }
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                {
+                    TempData["Error"] = "Không xác định được sản phẩm cần xóa.";
+                    return RedirectToAction("Dashboard");
+                }
 
-        //        var sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == id);
-        //        if (sp != null)
-        //        {
-        //            csdl.SANPHAM.Remove(sp);
-        //            csdl.SaveChanges();
-        //            TempData["Success"] = $"Đã xóa vĩnh viễn sản phẩm: {sp.TENSP}";
-        //        }
-        //        else
-        //        {
-        //            TempData["Error"] = "Không tìm thấy sản phẩm cần xóa.";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TempData["Error"] = "Lỗi khi xóa sản phẩm: " + ex.Message;
-        //    }
-        //    return RedirectToAction("Dashboard");
-        //}
+                var sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == id);
+                if (sp != null)
+                {
+                    csdl.SANPHAM.Remove(sp);
+                    csdl.SaveChanges();
+                    TempData["Success"] = $"Đã xóa vĩnh viễn sản phẩm: {sp.TENSP}";
+                }
+                else
+                {
+                    TempData["Error"] = "Không tìm thấy sản phẩm cần xóa.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Lỗi khi xóa sản phẩm: " + ex.Message;
+            }
+            return RedirectToAction("Dashboard");
+        }
         public ActionResult SearchProducts(string Search)
         {
             ViewBag.lsp = csdl.LOAISP.ToList(); ViewBag.thuonghieu = csdl.THUONGHIEU.ToList(); var model = new DanhMucViewModel
