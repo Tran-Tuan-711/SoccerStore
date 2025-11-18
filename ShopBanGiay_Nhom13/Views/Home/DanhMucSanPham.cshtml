@@ -52,8 +52,8 @@
                             }
                             else if (lsp.TENL != "Phụ kiện" && @ViewBag.math != null)
                             {
-                                <a href="/Home/LocSanPham/?MAL=@lsp.MAL&math=@ViewBag.math"
-                                   class="text-decoration-none">
+                                <a href = "/Home/LocSanPham/?MAL=@lsp.MAL&math=@ViewBag.math"
+                                    class="text-decoration-none">
                                     <label class="form-check-label text-white-50 mb-2 mx-4 d-block" style="font-size: 16px; font-weight: 500;">@lsp.TENL</label>
                                 </a>
                             }
@@ -92,7 +92,7 @@
                         {
                             <div class="col-4 mb-3">
                                 <div class="card card-product card-item border-1">
-                                    <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;" />
+                                    <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;"/>
                                     <div class="card-body">
                                         <p style="height: 80px;">@sp.TENSP</p>
                                         <p class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</p>
@@ -194,9 +194,9 @@
         z-index: 2;
     }
 
-        .card-item img {
-            background: #1a1a1a;
-            padding: 8px;
-            z-index: 2;
-        }
+    .card-item img {
+        background: #1a1a1a;
+        padding: 8px;
+        z-index: 2;
+    }
 </style>

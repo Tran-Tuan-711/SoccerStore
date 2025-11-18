@@ -17,6 +17,7 @@
                 }
 
                 <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid" style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden" />
+                <img src="~/Content/Images/@Model.HINHANH" alt="@Model.TENSP" class="img-fluid"  style="border-radius: 15px; border: 1px solid #343a40; overflow: hidden"/>
             </div>
 
             <!-- Thông tin hỗ trợ -->
@@ -87,10 +88,10 @@
 
                 <!-- Nút mua -->
                 @*action="@Url.Action("ThemVaoGio", "GioHang", new { id = Model.MASP })"*@
-
-                <button type="submit" class="btn-buy btn btn-warning w-75 fw-bold text-white">
-                    <i class="fa-cart-shopping fa-solid text-white"></i> THÊM VÀO GIỎ HÀNG
-                </button>
+            
+                    <button type="submit" class="btn-buy btn btn-warning w-75 fw-bold text-white">
+                        <i class="fa-cart-shopping fa-solid text-white"></i> THÊM VÀO GIỎ HÀNG
+                    </button>
             </form>
         </div>
     </div>
@@ -177,8 +178,7 @@
     .container-service i {
         color: #ffcc00;
     }
-
-    .btn-buy:hover {
+    .btn-buy:hover{
         background: #ee810d;
         transition: 0.6s ease;
     }

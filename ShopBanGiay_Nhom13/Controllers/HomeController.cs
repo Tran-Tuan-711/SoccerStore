@@ -121,8 +121,25 @@ namespace ShopBanGiay_Nhom13.Controllers
 
             List<SANPHAM> dssp = csdl.SANPHAM.Where(x => x.LOAISP.MAL == MAL).ToList();
             //Loc San Pham Theo Thuong Hieu
-            if (math != null)
+            if (math !=null)
             {
+
+                List<SANPHAM> dsth = csdl.SANPHAM.Where(x => x.THUONGHIEU.MATH == math).ToList();
+
+                var listMaLoaiLienQuan = dsth.Select(sp => sp.MAL).Distinct().ToList();
+
+                var dsLoaiCon = csdl.LOAISP
+                                      .Where(lsp => listMaLoaiLienQuan.Contains(lsp.MAL))
+                                      .OrderBy(lsp => lsp.MAL_CHA)
+                                      .ToList();
+
+
+                var model = new DanhMucViewModel
+                {
+                    DanhSachSP = dssp,
+                    DanhSachLoaiSP = dsLoaiCon,
+                    PhanLoai = "ThuongHieu",
+                    MaLoaiHienTai = null
 
                 List<SANPHAM> dsth = csdl.SANPHAM.Where(x => x.THUONGHIEU.MATH == math).ToList();
 

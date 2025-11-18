@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c6e8a361b64343939f6c5416649ceeff" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="05e5b18a11034cf3aeb2117bef793e7a" Name="Diagram1" ZoomLevel="70">
         <EntityTypeShape EntityType="SOCCERSTOREModel.CHITIETHOADON" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.GIOHANG" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.HOADON" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="SOCCERSTOREModel.LOAISP" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.PHUKIEN" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.SANPHAM" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SOCCERSTOREModel.SANPHAMNOIBAT" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOCCERSTOREModel.SANPHAMNOIBAT" Width="1.5" PointX="3.25" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.THUONGHIEU" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <AssociationConnector Association="SOCCERSTOREModel.FK__CHITIETHOA__MAHD__656C112C" ManuallyRouted="false" />
