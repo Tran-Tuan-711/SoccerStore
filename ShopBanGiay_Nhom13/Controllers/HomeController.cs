@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Web;
@@ -262,6 +264,18 @@ namespace ShopBanGiay_Nhom13.Controllers
         //    //    GIA = s.GIA ?? 0,
         //    //    MOTA = s.MOTA
         //    //}).ToList();
+        public ActionResult Dashboard()
+        {
+            var kho = csdl.SANPHAM.Select(s => new Kho
+            {
+                MASP = s.MASP,
+                TENSP = s.TENSP,
+                HINHANH = s.HINHANH,
+                SOLUONG = s.SOLUONG ?? 0,
+                GIA = s.GIA ?? 0,
+                MOTA = s.MOTA
+            }).ToList();
+            var sanpham = csdl.SANPHAM.ToList();
 
         //    ViewBag.Categories = csdl.LOAISP
         //        .Select(l => l.TENL)
@@ -270,6 +284,9 @@ namespace ShopBanGiay_Nhom13.Controllers
 
         //    return View();
         //}
+            return View(kho);
+            return View(sanpham);
+        }
         [HttpPost]
         public ActionResult Delete(string id)
         {
@@ -356,6 +373,132 @@ namespace ShopBanGiay_Nhom13.Controllers
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
             return View();
+        }
+        [HttpGet]
+        public ActionResult ThemSanPham()
+        {
+            string lastId = csdl.SANPHAM
+                .OrderByDescending(sp => sp.MASP)
+                .Select(sp => sp.MASP)
+                .FirstOrDefault();
+
+            int number = 1;
+            if (!string.IsNullOrEmpty(lastId))
+                number = int.Parse(lastId.Substring(2)) + 1;
+
+            ViewBag.NextMASP = "SP" + number.ToString("000");
+
+            ViewBag.Loai = csdl.LOAISP.ToList();
+            ViewBag.ThuongHieu = csdl.THUONGHIEU.ToList();
+            ViewBag.KhuyenMai = csdl.KHUYENMAI.ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThemSanPham(SANPHAM sp, HttpPostedFileBase upload)
+        {
+            try
+            {
+                var check = csdl.SANPHAM.FirstOrDefault(x => x.MASP == sp.MASP);
+                if (check != null)
+                {
+                    TempData["Error"] = "Mã sản phẩm đã tồn tại! Vui lòng nhập mã khác.";
+                    return View();
+                }
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(upload.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    upload.SaveAs(path);
+                    sp.HINHANH = fileName;
+                }
+
+                if (string.IsNullOrEmpty(sp.MASP) ||
+                    string.IsNullOrEmpty(sp.TENSP) ||
+                    sp.GIA == null ||
+                    sp.SOLUONG == null ||
+                    string.IsNullOrEmpty(sp.MAL) ||
+                    string.IsNullOrEmpty(sp.MATH))
+                {
+                    TempData["Error"] = "Vui lòng nhập đầy đủ thông tin!";
+                    return View();
+                }
+
+                // Nếu không có KM thì để null
+                if (string.IsNullOrEmpty(sp.MAKM))
+                    sp.MAKM = null;
+
+                csdl.SANPHAM.Add(sp);
+                csdl.SaveChanges();
+
+                TempData["Success"] = "Thêm sản phẩm thành công!";
+                return RedirectToAction("Dashboard");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Lỗi: " + ex.Message;
+                return View();
+            }
+        }
+        public ActionResult HoaDon()
+        {
+            var list = csdl.HOADON.ToList();
+            return View(list);
+        }
+
+        public ActionResult NguoiDung()
+        {
+            return View(csdl.KHACHHANG.ToList());
+        }
+
+        public ActionResult EditSanPham(string id)
+        {
+            if (id == null)
+                return RedirectToAction("Dashboard");
+
+            var sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == id);
+            if (sp == null)
+                return RedirectToAction("Dashboard");
+
+            ViewBag.Loai = csdl.LOAISP.ToList();
+            ViewBag.ThuongHieu = csdl.THUONGHIEU.ToList();
+            ViewBag.KhuyenMai = csdl.KHUYENMAI.ToList();
+
+            return View("EditSanPham", sp);
+        }
+
+        [HttpPost]
+        public ActionResult EditSanPham(SANPHAM sp, HttpPostedFileBase upload)
+        {
+            var old = csdl.SANPHAM.FirstOrDefault(x => x.MASP == sp.MASP);
+            if (old == null)
+            {
+                TempData["Error"] = "Không tìm thấy sản phẩm!";
+                return RedirectToAction("Dashboard");
+            }
+
+            if (upload != null && upload.ContentLength > 0)
+            {
+                string fileName = Path.GetFileName(upload.FileName);
+                string path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                upload.SaveAs(path);
+                old.HINHANH = fileName;
+            }
+
+            old.TENSP = sp.TENSP;
+            old.SOLUONG = sp.SOLUONG;
+            old.GIA = sp.GIA;
+            old.MOTA = sp.MOTA;
+            old.MAL = sp.MAL;
+            old.MATH = sp.MATH;
+            old.MAKM = sp.MAKM;
+
+            csdl.SaveChanges();
+
+            TempData["Success"] = "Cập nhật sản phẩm thành công!";
+            return RedirectToAction("Dashboard");
         }
 
     }
