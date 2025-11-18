@@ -92,14 +92,32 @@
                         {
                             <div class="col-4 mb-3">
                                 <div class="card card-product card-item border-1">
-                                    <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;"/>
-                                    <div class="card-body">
-                                        <p style="height: 80px;">@sp.TENSP</p>
-                                        <p class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</p>
-                                        <div class="text-end">
-                                            <a class="text-decoration-none btn btn-secondary" href="/Home/ChiTietSanPham/?masp=@sp.MASP">Xem chi tiết</a>
+                                    @if (sp.MAKM != null)
+                                    {
+                                        <span class="badge bg-danger position-absolute top-0 start-0 w-25" style="z-index: 100;">-@sp.KHUYENMAI.PHANTRAMGIAM%</span>
+                                        <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;" />
+                                    }
+                                    else { <img class="card-img" src="~/Content/Images/@sp.HINHANH" style="height: 260px;" /> }
+                                <div class="card-body">
+                                    <p style="height: 80px;">@sp.TENSP</p>
+                                    @if (sp.MAKM != null)
+                                    {
+                                        <div class="mb-4">
+                                            <span class="text-danger">@String.Format("{0:N0} ₫", sp.GIA - (sp.GIA * sp.KHUYENMAI.PHANTRAMGIAM / 100))</span>
+                                            <span class="text-muted text-decoration-line-through ms-2">@String.Format("{0:N0} ₫", sp.GIA)</span>
                                         </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="mb-4">
+                                            <span class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</span>
+                                        </div>
+                                    }
+                                    @*<p class="text-danger">@String.Format("{0:N0} ₫", sp.GIA)</p>*@
+                                    <div class="text-end">
+                                        <a class="text-decoration-none btn btn-secondary" href="/Home/ChiTietSanPham/?masp=@sp.MASP">Xem chi tiết</a>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         }
