@@ -2,8 +2,7 @@
     ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
-@using ShopBanGiay_Nhom13.Models;
-@model SANPHAM
+@model ShopBanGiay_Nhom13.Models.SANPHAM
 
 <div class="container mt-5 text-white container-service">
     <div class="row">
@@ -70,15 +69,14 @@
             <form action="#" method="post">
                 <!-- Chọn size -->
                 <div class="my-3">
-                    <strong>Chọn size:</strong><br />
-                    @*@foreach (var size in Model.Sizes)
+                    @if (Convert.ToInt32(Model.SANPHAM_SIZE.Count()) != 0)
+                    {
+                        <strong>Chọn size:</strong><br />
+                        foreach (var sz in Model.SANPHAM_SIZE)
                         {
-                            <button class="btn btn-outline-light m-1">@size</button>
-                        }*@
-                    <button class="btn btn-outline-light m-1">33</button>
-                    <button class="btn btn-outline-light m-1">34</button>
-                    <button class="btn btn-outline-light m-1">35.5</button>
-                    <button class="btn btn-outline-light m-1">36</button>
+                            <button class="btn btn-outline-light m-1">@sz.SIZE.SOSIZE</button>
+                        }
+                    }
                 </div>
 
                 <!-- Chọn số lượng -->

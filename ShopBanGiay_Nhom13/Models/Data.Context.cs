@@ -30,7 +30,6 @@ namespace ShopBanGiay_Nhom13.Models
     
         public DbSet<CHITIETHOADON> CHITIETHOADON { get; set; }
         public DbSet<GIOHANG> GIOHANG { get; set; }
-        public DbSet<HOADON> HOADON { get; set; }
         public DbSet<KHACHHANG> KHACHHANG { get; set; }
         public DbSet<KHUYENMAI> KHUYENMAI { get; set; }
         public DbSet<LOAISP> LOAISP { get; set; }
@@ -39,6 +38,9 @@ namespace ShopBanGiay_Nhom13.Models
         public DbSet<SANPHAMNOIBAT> SANPHAMNOIBAT { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<THUONGHIEU> THUONGHIEU { get; set; }
+        public DbSet<SANPHAM_SIZE> SANPHAM_SIZE { get; set; }
+        public DbSet<SIZE> SIZE { get; set; }
+        public DbSet<HOADON> HOADON { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

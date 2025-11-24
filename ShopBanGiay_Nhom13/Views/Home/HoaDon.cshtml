@@ -15,8 +15,7 @@
             <th>Ngày hẹn giao</th>
             <th>Tổng tiền</th>
             <th>Ngày thanh toán</th>
-            <th>Mã SP</th>
-            <th>Mã KH</th>
+            <th>Mã KH</th>  
         </tr>
     </thead>
 
@@ -34,7 +33,6 @@
 
                 <td>@(hd.NGAYTHANHTOAN == null ? "" : hd.NGAYTHANHTOAN.Value.ToString("yyyy-MM-dd"))</td>
 
-                <td>@hd.MASP</td>
                 <td>@hd.MAKH</td>
             </tr>
         }

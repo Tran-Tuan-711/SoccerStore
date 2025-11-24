@@ -12,13 +12,16 @@ namespace ShopBanGiay_Nhom13.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CHITIETHOADON
+    public partial class SIZE
     {
-        public string MAHD { get; set; }
-        public string MASP { get; set; }
-        public Nullable<int> SOLUONG { get; set; }
+        public SIZE()
+        {
+            this.SANPHAM_SIZE = new HashSet<SANPHAM_SIZE>();
+        }
     
-        public virtual SANPHAM SANPHAM { get; set; }
-        public virtual HOADON HOADON { get; set; }
+        public string MASIZE { get; set; }
+        public Nullable<int> SOSIZE { get; set; }
+    
+        public virtual ICollection<SANPHAM_SIZE> SANPHAM_SIZE { get; set; }
     }
 }

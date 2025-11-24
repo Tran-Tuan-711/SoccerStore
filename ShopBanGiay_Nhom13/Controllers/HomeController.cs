@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Xml.Linq;
+using System.IO;
 
 namespace ShopBanGiay_Nhom13.Controllers
 {
@@ -237,6 +238,7 @@ namespace ShopBanGiay_Nhom13.Controllers
         }
         public ActionResult ChiTietSanPham(string masp)
         {
+            if (masp == null) return RedirectToAction("Index", "Home");
             ViewBag.lsp = csdl.LOAISP.ToList();
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
 

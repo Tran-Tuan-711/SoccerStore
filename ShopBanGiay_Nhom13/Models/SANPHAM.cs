@@ -18,10 +18,10 @@ namespace ShopBanGiay_Nhom13.Models
         {
             this.CHITIETHOADON = new HashSet<CHITIETHOADON>();
             this.GIOHANG = new HashSet<GIOHANG>();
-            this.HOADON = new HashSet<HOADON>();
             this.PHUKIEN = new HashSet<PHUKIEN>();
             this.SANPHAMNOIBAT = new HashSet<SANPHAMNOIBAT>();
             this.KHUYENMAI1 = new HashSet<KHUYENMAI>();
+            this.SANPHAM_SIZE = new HashSet<SANPHAM_SIZE>();
         }
     
         public string MASP { get; set; }
@@ -36,12 +36,12 @@ namespace ShopBanGiay_Nhom13.Models
     
         public virtual ICollection<CHITIETHOADON> CHITIETHOADON { get; set; }
         public virtual ICollection<GIOHANG> GIOHANG { get; set; }
-        public virtual ICollection<HOADON> HOADON { get; set; }
         public virtual KHUYENMAI KHUYENMAI { get; set; }
         public virtual LOAISP LOAISP { get; set; }
         public virtual ICollection<PHUKIEN> PHUKIEN { get; set; }
         public virtual THUONGHIEU THUONGHIEU { get; set; }
         public virtual ICollection<SANPHAMNOIBAT> SANPHAMNOIBAT { get; set; }
         public virtual ICollection<KHUYENMAI> KHUYENMAI1 { get; set; }
+        public virtual ICollection<SANPHAM_SIZE> SANPHAM_SIZE { get; set; }
     }
 }
