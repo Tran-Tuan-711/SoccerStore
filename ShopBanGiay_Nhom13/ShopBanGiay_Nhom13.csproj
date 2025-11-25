@@ -5965,6 +5965,9 @@
     <Content Include="Content\Images\IF6373.png" />
     <Content Include="Content\Images\IF8194-830.png" />
     <Content Include="Content\Images\IF8194-830_v2.png" />
+    <Content Include="Content\Images\inan1.png" />
+    <Content Include="Content\Images\inan2.png" />
+    <Content Include="Content\Images\inan3.png" />
     <Content Include="Content\Images\IP3895.png" />
     <Content Include="Content\Images\IP4000.png" />
     <Content Include="Content\Images\JF3108.png" />
@@ -5994,6 +5997,26 @@
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\man_city_blue_25.png" />
     <Content Include="Content\Images\man_red_25.png" />
+    <Content Include="Content\Images\mh1.jpg" />
+    <Content Include="Content\Images\mh10.jpg" />
+    <Content Include="Content\Images\mh11.jpg" />
+    <Content Include="Content\Images\mh12.jpg" />
+    <Content Include="Content\Images\mh13.jpg" />
+    <Content Include="Content\Images\mh14.jpg" />
+    <Content Include="Content\Images\mh15.jpg" />
+    <Content Include="Content\Images\mh16.jpg" />
+    <Content Include="Content\Images\mh17.jpg" />
+    <Content Include="Content\Images\mh18.jpg" />
+    <Content Include="Content\Images\mh19.jpg" />
+    <Content Include="Content\Images\mh2.jpg" />
+    <Content Include="Content\Images\mh20.jpg" />
+    <Content Include="Content\Images\mh3.jpg" />
+    <Content Include="Content\Images\mh4.jpg" />
+    <Content Include="Content\Images\mh5.jpg" />
+    <Content Include="Content\Images\mh6.jpg" />
+    <Content Include="Content\Images\mh7.jpg" />
+    <Content Include="Content\Images\mh8.jpg" />
+    <Content Include="Content\Images\mh9.jpg" />
     <Content Include="Content\Images\mitre_vanlang_cam.png" />
     <Content Include="Content\Images\mitre_vanlang_xanhduong.png" />
     <Content Include="Content\Images\Nevor_BDG12_redblack.png" />
@@ -6139,7 +6162,8 @@
     <Content Include="Views\Home\PhuKien.cshtml" />
     <Content Include="Views\Home\ChiTietSanPham.cshtml" />
     <Content Include="Views\Home\flashSale.cshtml" />
-    <Content Include="Views\Home\DashBoard.cshtml" />
+    <Content Include="Views\Home\InAnQuanAo.cshtml" />
+    <Content Include="Views\Home\ThanhLyVaKyGui.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
