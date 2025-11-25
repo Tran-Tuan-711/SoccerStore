@@ -366,7 +366,7 @@ namespace ShopBanGiay_Nhom13.Controllers
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
             return View();
         }
-        }
+        
         [HttpGet]
         public ActionResult ThemSanPham()
         {
