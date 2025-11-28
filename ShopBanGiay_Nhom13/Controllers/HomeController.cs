@@ -366,18 +366,6 @@ namespace ShopBanGiay_Nhom13.Controllers
             ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
             return View();
         }
-        public ActionResult InAnQuanAo()
-        {
-            ViewBag.lsp = csdl.LOAISP.ToList();
-            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
-            return View();
-        }
-        public ActionResult ThanhLyVaKyGui()
-        {
-            ViewBag.lsp = csdl.LOAISP.ToList();
-            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
-            return View();
-        }
         
         [HttpGet]
         public ActionResult ThemSanPham()
