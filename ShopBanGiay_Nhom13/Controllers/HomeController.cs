@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
-using System.Xml.Linq;
+//using System.Xml.Linq;
 using System.IO;
 
 namespace ShopBanGiay_Nhom13.Controllers
@@ -514,6 +514,171 @@ namespace ShopBanGiay_Nhom13.Controllers
 
             return View(dsSanPhamThanhLy);
         }
+        public ActionResult ThemVaoGioHang(string masp, int quantity = 1)
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+            if (kh== null)
+                return RedirectToAction("SignIn", "Home");
 
+            var item = csdl.GIOHANG
+                         .FirstOrDefault(g => g.MAKH == kh.MAKH && g.MASP == masp);
+
+            if (item != null)
+            {
+                item.SOLUONG += quantity;
+            }
+            else
+            {
+                csdl.GIOHANG.Add(new GIOHANG
+                {
+                    MAKH = kh.MAKH,
+                    MASP = masp,
+                    SOLUONG= quantity
+                });
+            }
+
+            csdl.SaveChanges();
+            return RedirectToAction("GioHang");
+        }
+
+        public ActionResult GioHang()
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            var cart = csdl.GIOHANG
+                         .Where(g => g.MAKH == kh.MAKH)
+                         .ToList();
+            return View(cart);
+        }
+
+        [HttpPost]
+        public ActionResult Update(string masp, int soluong)
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+
+            var item = csdl.GIOHANG.FirstOrDefault(g => g.MAKH == kh.MAKH && g.MASP== masp);
+
+            if (item != null)
+            {
+                item.SOLUONG = soluong;
+                csdl.SaveChanges();
+            }
+
+            return RedirectToAction("GioHang");
+        }
+
+        public ActionResult Remove(string masp)
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+
+            var item = csdl.GIOHANG.FirstOrDefault(g => g.MAKH == kh.MAKH && g.MASP == masp);
+
+            if (item != null)
+            {
+                csdl.GIOHANG.Remove(item);
+                csdl.SaveChanges();
+            }
+
+            return RedirectToAction("GioHang");
+        }
+
+        public ActionResult ThanhToan()
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+            if (kh == null)
+                return RedirectToAction("SignIn", "Home");
+
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            var cart = csdl.GIOHANG
+                         .Where(g => g.MAKH == kh.MAKH)
+                         .ToList();
+
+            if (!cart.Any())
+            {
+                TempData["Error"] = "Giỏ hàng trống.";
+                return RedirectToAction("GioHang", "Home");
+            }
+
+            decimal total = 0m;
+            foreach (var item in cart)
+            {
+                var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
+                if (sp?.GIA != null && item.SOLUONG != null)
+                {
+                    total += sp.GIA.Value * item.SOLUONG.Value;
+                }
+            }
+            ViewBag.Total = total;
+            return View(cart);
+        }
+
+        public ActionResult LuuHoaDon()
+        {
+            KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
+            if (kh == null)
+                return RedirectToAction("SignIn", "Home");
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            var cart = csdl.GIOHANG
+                         .Where(g => g.MAKH == kh.MAKH)
+                         .ToList();
+            if (!cart.Any())
+            {
+                TempData["Error"] = "Giỏ hàng trống.";
+                return RedirectToAction("GioHang", "Home");
+            }
+            HOADON hd = new HOADON
+            {
+                MAHD = "HD" + (csdl.HOADON.Count() + 1).ToString("000"),
+                MAKH = kh.MAKH,
+                NGAYTAO = DateTime.Now,
+                TONGTIEN = cart.Sum(item =>
+                {
+                    var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
+                    if (sp?.GIA != null && item.SOLUONG != null)
+                    {
+                        return sp.GIA.Value * item.SOLUONG.Value;
+                    }
+                    return 0m;
+                })
+
+            };
+            csdl.HOADON.Add(hd);
+            csdl.SaveChanges();
+            foreach (var item in cart)
+            {
+                CHITIETHOADON cthd = new CHITIETHOADON
+                {
+                    MAHD = hd.MAHD,
+                    MASP = item.MASP,
+                    SOLUONG = item.SOLUONG
+                };
+                csdl.CHITIETHOADON.Add(cthd);
+                SANPHAM sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == cthd.MASP);
+                if (sp != null && item.SOLUONG != null)
+                {
+                    sp.SOLUONG -= item.SOLUONG.Value;
+                }
+            }
+             
+
+            csdl.SaveChanges();
+            TempData["Success"] = "Đặt hàng thành công!";
+
+            return RedirectToAction("DatHanhThanhCong", hd);
+
+        }
+
+        public ActionResult DatHanhThanhCong(HOADON hd)
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            ViewBag.SanPham = csdl.SANPHAM.Where(x =>x.MASP == hd.CHITIETHOADON.FirstOrDefault().MASP).FirstOrDefault();
+            return View(hd);
+        }
     }
 }
