@@ -5908,7 +5908,19 @@
     <Content Include="Content\Images\banner4.jpg" />
     <Content Include="Content\Images\bar_blue_red_25_giay.png" />
     <Content Include="Content\Images\bar_blue_red_25_ta.png" />
+    <Content Include="Content\Images\chan1.png" />
+    <Content Include="Content\Images\chan2.png" />
+    <Content Include="Content\Images\chan3.png" />
+    <Content Include="Content\Images\chan4.png" />
+    <Content Include="Content\Images\chan5.png" />
+    <Content Include="Content\Images\chan6.png" />
     <Content Include="Content\Images\che_blue_25.png" />
+    <Content Include="Content\Images\chinhsachbaohanh.jpg" />
+    <Content Include="Content\Images\csdt1.jpg" />
+    <Content Include="Content\Images\csdt2.jpg" />
+    <Content Include="Content\Images\csdt3.jpg" />
+    <Content Include="Content\Images\csdt4.jpg" />
+    <Content Include="Content\Images\csdt5.jpg" />
     <Content Include="Content\Images\CU8090-010.png" />
     <Content Include="Content\Images\CU8097-010.png" />
     <Content Include="Content\Images\DN3611-100.png" />
@@ -5955,6 +5967,7 @@
     <Content Include="Content\Images\HQ2038-800.png" />
     <Content Include="Content\Images\HQ2049-800.png" />
     <Content Include="Content\Images\HS9767.png" />
+    <Content Include="Content\Images\huongdanmuahang.jpg" />
     <Content Include="Content\Images\HV4392-100.png" />
     <Content Include="Content\Images\HV9915-100.png" />
     <Content Include="Content\Images\IB1514-600.png" />

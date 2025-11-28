@@ -55,10 +55,17 @@ namespace ShopBanGiay_Nhom13.Controllers
                 ViewBag.Error = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
-            //if (kh.ROLES == "Admin") return RedirectToAction("Dashboard");
 
             Session["KHACHHANG"] = kh;
-            return RedirectToAction("Index");
+            if (kh.ROLES != null && kh.ROLES.Trim().ToLower() == "admin")
+            {
+                return RedirectToAction("Dashboard");
+            }
+            else
+            {
+                // Là User hoặc Role khác
+                return RedirectToAction("Index");
+            }
         }
         public ActionResult SignUp()
         {
@@ -257,6 +264,11 @@ namespace ShopBanGiay_Nhom13.Controllers
 
         public ActionResult Dashboard()
         {
+            var kh = Session["KHACHHANG"] as KHACHHANG;
+            if (kh == null || (kh.ROLES != null && kh.ROLES.Trim().ToLower() != "admin"))
+            {
+                return RedirectToAction("SignIn");
+            }
             var sanpham = csdl.SANPHAM.ToList();
             ViewBag.Categories = csdl.LOAISP
                 .Select(l => l.TENL)
@@ -495,5 +507,25 @@ namespace ShopBanGiay_Nhom13.Controllers
             TempData["Success"] = "Cập nhật sản phẩm thành công!";
             return RedirectToAction("Dashboard");
         }
+        public ActionResult InAnQuanAo()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+            return View();
+        }
+        public ActionResult ThanhLyVaKyGui()
+        {
+            ViewBag.lsp = csdl.LOAISP.ToList();
+            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
+
+            List<string> dsMaSPThanhLy = new List<string> { "SP039", "SP028", "SP034", "SP041", "SP051", "SP070", "SP072", "SP105", "SP118", "SP069" };
+
+            var dsSanPhamThanhLy = csdl.SANPHAM
+                                         .Where(sp => dsMaSPThanhLy.Contains(sp.MASP))
+                                         .ToList();
+
+            return View(dsSanPhamThanhLy);
+        }
+
     }
 }
