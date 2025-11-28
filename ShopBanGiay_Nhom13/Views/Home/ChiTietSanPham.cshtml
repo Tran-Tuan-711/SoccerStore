@@ -66,7 +66,7 @@
             </div>
 
             <p>@Model.MOTA</p>
-            <form action="#" method="post">
+            <form action="/Home/ThemVaoGioHang" method="post">
                 <!-- Chọn size -->
                 <div class="my-3">
                     @if (Convert.ToInt32(Model.SANPHAM_SIZE.Count()) != 0)
@@ -78,6 +78,9 @@
                         }
                     }
                 </div>
+                <div>
+                    <input type="text" name="masp" value="@Model.MASP" hidden />
+                </div>
 
                 <!-- Chọn số lượng -->
                 <div class="my-3">
@@ -87,11 +90,14 @@
 
                 <!-- Nút mua -->
                 @*action="@Url.Action("ThemVaoGio", "GioHang", new { id = Model.MASP })"*@
-            
-                    <button type="submit" class="btn-buy btn btn-warning w-75 fw-bold text-white">
-                        <i class="fa-cart-shopping fa-solid text-white"></i> THÊM VÀO GIỎ HÀNG
-                    </button>
+
+            <button  class="btn btn-primary">
+                Thêm vào giỏ hàng
+            </button>
+
+              
             </form>
+
         </div>
     </div>
 

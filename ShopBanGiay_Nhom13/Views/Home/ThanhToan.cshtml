@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+@model IEnumerable<ShopBanGiay_Nhom13.Models.GIOHANG>
+
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+
+    var kh = Session["KHACHHANG"] as ShopBanGiay_Nhom13.Models.KHACHHANG;
+    decimal total = 0m;
+    if (Model != null)
+    {
+        foreach (var it in Model)
+        {
+            var price = it.SANPHAM.GIA ?? 0m;
+            var qty = it.SOLUONG ?? 0;
+            total += price * qty;
+        }
+    }
+    // Prefer controller to set ViewBag.Total; fallback to computed value
+    if (ViewBag.Total == null)
+    {
+        ViewBag.Total = total;
+    }
+}
+
+<h2 class="text-white">Thanh toán</h2>
+
+@if (kh == null)
+{
+    <div class="alert alert-warning">Bạn chưa đăng nhập. Vui lòng <a href="@Url.Action("SignIn", "Home")">đăng nhập</a> để tiếp tục.</div>
+}
+else if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">Giỏ hàng trống. <a href="@Url.Action("Index", "Home")">Tiếp tục mua sắm</a></div>
+}
+else
+{
+    using (Html.BeginForm("LuuHoaDon", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row bg-white p-2">
+            
+
+            <div class="">
+                <h4>Đơn hàng</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th class="text-center">SL</th>
+                            <th class="text-right">Đơn giá</th>
+                            <th class="text-right">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var sp = item.SANPHAM;
+                            var name = sp.TENSP ?? item.MASP;
+                            var price = sp.GIA ?? 0m;
+                            var qty = item.SOLUONG ?? 0;
+                            var line = price * qty;
+                            <tr>
+                                <td>
+                                    <div>
+                                        @if (!string.IsNullOrEmpty(sp.HINHANH))
+                                        {
+                                            <img src="@Url.Content("~/Content/Images/" + sp.HINHANH)" alt="@name" style="height:48px;margin-right:8px;" />
+                                        }
+                                        <strong>@name</strong>
+                                    </div>
+                                </td>
+                                <td class="text-center">@qty</td>
+                                <td class="text-right">@price.ToString("N0") ₫</td>
+                                <td class="text-right">@line.ToString("N0") ₫</td>
+
+                                @* Hidden fields to post cart contents *@
+                                <input type="hidden" name="Items.Index" value="@item.MASP" />
+                                <input type="hidden" name="Items[@item.MASP].MASP" value="@item.MASP" />
+                                <input type="hidden" name="Items[@item.MASP].SOLUONG" value="@qty" />
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3" class="text-right">Tạm tính</th>
+                            <th class="text-right">@ViewBag.Total.ToString("N0") ₫</th>
+                        </tr>
+                        <tr>
+                            <th colspan="3" class="text-right">Phí vận chuyển</th>
+                            <th class="text-right">Miễn phí</th>
+                        </tr>
+                        <tr>
+                            <th colspan="3" class="text-right">Tổng cộng</th>
+                            <th class="text-right">@ViewBag.Total.ToString("N0") ₫</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Đặt hàng và thanh toán</button>
+                    <a href="@Url.Action("GioHang", "Home")" class="btn btn-default">Quay lại Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    }
+}

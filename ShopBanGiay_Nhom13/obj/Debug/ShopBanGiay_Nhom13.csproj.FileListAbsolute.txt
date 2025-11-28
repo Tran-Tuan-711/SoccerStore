@@ -74,3 +74,41 @@ E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.AssemblyReference.cache
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.CoreCompileInputs.cache
 E:\Lập Trình Web\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.AssemblyReference.cache
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.csproj.CoreCompileInputs.cache
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanGiay_Nhom13.pdb
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll.config
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\ShopBanGiay_Nhom13.pdb
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\Antlr3.Runtime.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Infrastructure.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Optimization.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Providers.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\WebGrease.dll
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\EntityFramework.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\PagedList.Mvc.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\Newtonsoft.Json.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Net.Http.Formatting.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Http.WebHost.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Mvc.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.Razor.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Deployment.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\bin\System.Web.WebPages.Razor.xml
+D:\workspaces\Projects\LTW\SoccerStore\ShopBanGiay_Nhom13\obj\Debug\ShopBanG.7BB4675E.Up2Date
