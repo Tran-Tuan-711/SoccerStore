@@ -116,7 +116,7 @@ namespace ShopBanGiay_Nhom13.Controllers
         public ActionResult Logout()
         {
             Session["KHACHHANG"] = null;
-            return RedirectToAction("Index");
+            return RedirectToAction("SignIn");
         }
         public ActionResult DanhMucSanPham()
         {

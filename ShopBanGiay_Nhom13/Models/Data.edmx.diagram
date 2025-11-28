@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="05e5b18a11034cf3aeb2117bef793e7a" Name="Diagram1" ZoomLevel="70">
+      <Diagram DiagramId="05e5b18a11034cf3aeb2117bef793e7a" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="SOCCERSTOREModel.CHITIETHOADON" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.GIOHANG" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SOCCERSTOREModel.KHACHHANG" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
