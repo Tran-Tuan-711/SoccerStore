@@ -615,62 +615,47 @@ namespace ShopBanGiay_Nhom13.Controllers
             ViewBag.Total = total;
             return View(cart);
         }
-
-        public ActionResult LuuHoaDon()
+        [HttpPost]
+        public ActionResult LuuHoaDon(string TenNguoiNhan, string DiaChi, string GhiChu, DateTime? NgayHenGiao)
         {
             KHACHHANG kh = Session["KHACHHANG"] as KHACHHANG;
-            if (kh == null)
-                return RedirectToAction("SignIn", "Home");
-            ViewBag.lsp = csdl.LOAISP.ToList();
-            ViewBag.thuonghieu = csdl.THUONGHIEU.ToList();
-            var cart = csdl.GIOHANG
-                         .Where(g => g.MAKH == kh.MAKH)
-                         .ToList();
-            if (!cart.Any())
-            {
-                TempData["Error"] = "Giỏ hàng trống.";
-                return RedirectToAction("GioHang", "Home");
-            }
+            if (kh == null) return RedirectToAction("SignIn");
+
+            var cart = csdl.GIOHANG.Where(g => g.MAKH == kh.MAKH).ToList();
+            if (!cart.Any()) return RedirectToAction("GioHang");
+
             HOADON hd = new HOADON
             {
                 MAHD = "HD" + (csdl.HOADON.Count() + 1).ToString("000"),
                 MAKH = kh.MAKH,
                 NGAYTAO = DateTime.Now,
-                TONGTIEN = cart.Sum(item =>
-                {
-                    var sp = csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP);
-                    if (sp?.GIA != null && item.SOLUONG != null)
-                    {
-                        return sp.GIA.Value * item.SOLUONG.Value;
-                    }
-                    return 0m;
-                })
-
+                TONGTIEN = cart.Sum(s => s.SOLUONG * s.SANPHAM.GIA),
+                DIACHI = DiaChi,
+                GHICHU = GhiChu,
+                NGAYHENGIAO = NgayHenGiao ?? DateTime.Now.AddDays(3)
             };
             csdl.HOADON.Add(hd);
             csdl.SaveChanges();
+
             foreach (var item in cart)
             {
-                CHITIETHOADON cthd = new CHITIETHOADON
+                csdl.CHITIETHOADON.Add(new CHITIETHOADON
                 {
                     MAHD = hd.MAHD,
                     MASP = item.MASP,
                     SOLUONG = item.SOLUONG
-                };
-                csdl.CHITIETHOADON.Add(cthd);
-                SANPHAM sp = csdl.SANPHAM.FirstOrDefault(x => x.MASP == cthd.MASP);
-                if (sp != null && item.SOLUONG != null)
-                {
-                    sp.SOLUONG -= item.SOLUONG.Value;
-                }
+                });
+                csdl.SANPHAM.FirstOrDefault(s => s.MASP == item.MASP).SOLUONG -= item.SOLUONG;
             }
-             
+
+            foreach (var item in cart)
+            {
+                csdl.GIOHANG.Remove(item);
+            }
 
             csdl.SaveChanges();
-            TempData["Success"] = "Đặt hàng thành công!";
 
-            return RedirectToAction("DatHanhThanhCong", hd);
-
+            return RedirectToAction("DatHanhThanhCong", new { id = hd.MAHD });
         }
 
         public ActionResult DatHanhThanhCong(HOADON hd)

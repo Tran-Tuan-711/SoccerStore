@@ -39,8 +39,8 @@
           <Property Name="NGAYTAO" Type="date" />
           <Property Name="NGAYHENGIAO" Type="date" />
           <Property Name="TONGTIEN" Type="decimal" Precision="12" Scale="0" />
-          <Property Name="NGAYTHANHTOAN" Type="date" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="200" />
           <Property Name="MAKH" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="KHACHHANG">
@@ -161,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MAHD__3F115E1A">
+        <Association Name="FK__CHITIETHOA__MAHD__65370702">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -173,7 +173,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MASP__40058253">
+        <Association Name="FK__CHITIETHOA__MASP__662B2B3B">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MAKH__3C34F16F">
+        <Association Name="FK__HOADON__MAKH__625A9A57">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -383,11 +383,11 @@
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETKHUYENMAI" EntitySet="CHITIETKHUYENMAI" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MAHD__3F115E1A" Association="Self.FK__CHITIETHOA__MAHD__3F115E1A">
+          <AssociationSet Name="FK__CHITIETHOA__MAHD__65370702" Association="Self.FK__CHITIETHOA__MAHD__65370702">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MASP__40058253" Association="Self.FK__CHITIETHOA__MASP__40058253">
+          <AssociationSet Name="FK__CHITIETHOA__MASP__662B2B3B" Association="Self.FK__CHITIETHOA__MASP__662B2B3B">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
@@ -399,7 +399,7 @@
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="GIOHANG" EntitySet="GIOHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MAKH__3C34F16F" Association="Self.FK__HOADON__MAKH__3C34F16F">
+          <AssociationSet Name="FK__HOADON__MAKH__625A9A57" Association="Self.FK__HOADON__MAKH__625A9A57">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
@@ -856,11 +856,11 @@
           <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
           <Property Name="NGAYHENGIAO" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Decimal" Precision="12" Scale="0" />
-          <Property Name="NGAYTHANHTOAN" Type="DateTime" Precision="0" />
           <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CHITIETHOADON" Relationship="SOCCERSTOREModel.FK__CHITIETHOA__MAHD__2BFE89A6" FromRole="HOADON" ToRole="CHITIETHOADON" />
           <NavigationProperty Name="KHACHHANG" Relationship="SOCCERSTOREModel.FK__HOADON__MAKH__29221CFB" FromRole="HOADON" ToRole="KHACHHANG" />
           <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GHICHU" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__CHITIETHOA__MAHD__2BFE89A6">
           <End Type="SOCCERSTOREModel.HOADON" Role="HOADON" Multiplicity="1" />
@@ -1048,9 +1048,9 @@
           <EntitySetMapping Name="HOADON">
             <EntityTypeMapping TypeName="SOCCERSTOREModel.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="NGAYTHANHTOAN" ColumnName="NGAYTHANHTOAN" />
                 <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
                 <ScalarProperty Name="NGAYHENGIAO" ColumnName="NGAYHENGIAO" />
                 <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />

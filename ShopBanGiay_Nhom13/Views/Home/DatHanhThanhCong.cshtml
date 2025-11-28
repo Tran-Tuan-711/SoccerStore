@@ -16,7 +16,7 @@
     decimal total = Model.TONGTIEN ?? 0m;
 }
 
-<div class="container bg-white">
+<div class="container bg-white my-5">
     <div class="page-header">
         <h2>Đặt hàng thành công</h2>
     </div>
@@ -24,7 +24,7 @@
     @if (string.IsNullOrEmpty(mahd) && !items.Any())
     {
         <div class="alert alert-success">
-            Cảm ơn bạn! Đơn hàng của bạn đã được nhận. Bạn có thể kiểm tra mục <a href="@Url.Action("HoaDon", "Home")">Hóa đơn</a> để xem chi tiết.
+            Cảm ơn bạn! Đơn hàng của bạn đã được nhận.
         </div>
     }
     else

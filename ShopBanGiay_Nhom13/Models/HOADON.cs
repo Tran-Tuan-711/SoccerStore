@@ -23,9 +23,9 @@ namespace ShopBanGiay_Nhom13.Models
         public Nullable<System.DateTime> NGAYTAO { get; set; }
         public Nullable<System.DateTime> NGAYHENGIAO { get; set; }
         public Nullable<decimal> TONGTIEN { get; set; }
-        public Nullable<System.DateTime> NGAYTHANHTOAN { get; set; }
         public string MAKH { get; set; }
         public string DIACHI { get; set; }
+        public string GHICHU { get; set; }
     
         public virtual ICollection<CHITIETHOADON> CHITIETHOADON { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }

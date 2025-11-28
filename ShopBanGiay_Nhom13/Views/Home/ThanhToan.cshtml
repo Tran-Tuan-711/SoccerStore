@@ -27,7 +27,7 @@
     }
 }
 
-<h2 class="text-white my-4">Thanh toán</h2>
+<h2 class="text-white my-5">Thanh toán</h2>
 
 @if (kh == null)
 {
@@ -39,14 +39,50 @@ else if (Model == null || !Model.Any())
 }
 else
 {
-    using (Html.BeginForm("LuuHoaDon", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    using (Html.BeginForm("LuuHoaDon", "Home", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
-        <div class="row bg-white p-2">
-            
+        <div class="row bg-white p-4">
+            <!-- Cột trái -->
+            <div class="col-md-6">
+                <h4>Thông tin giao hàng</h4>
+                <div class="form-group">
+                    <label>Người nhận</label>
+                    <input type="text" name="TenNguoiNhan" class="form-control" value="@kh.TENKH" required />
+                </div>
 
-            <div class="">
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" name="SDT" class="form-control" value="@kh.SODIENTHOAI" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" name="DiaChi" class="form-control" placeholder="Số nhà, đường, phường, quận, tỉnh" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Ngày hẹn giao</label>
+                    <input type="date" name="NgayHenGiao" class="form-control"
+                           value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                </div>
+
+                <h4>Phương thức thanh toán</h4>
+                <div>
+                    <label>
+                        <input type="radio" name="ThanhToan" value="COD" checked /> Thanh toán khi nhận hàng (COD)
+                    </label><br />
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Ghi chú</label>
+                    <textarea name="GhiChu" class="form-control" rows="3" placeholder="Ghi chú cho người giao hàng (không bắt buộc)"></textarea>
+                </div>
+            </div>
+
+            <!-- Cột phải -->
+            <div class="col-md-6">
                 <h4>Đơn hàng</h4>
                 <table class="table table-striped">
                     <thead>
@@ -65,21 +101,20 @@ else
                             var price = sp.GIA ?? 0m;
                             var qty = item.SOLUONG ?? 0;
                             var line = price * qty;
+
                             <tr>
                                 <td>
-                                    <div>
-                                        @if (!string.IsNullOrEmpty(sp.HINHANH))
-                                        {
-                                            <img src="@Url.Content("~/Content/Images/" + sp.HINHANH)" alt="@name" style="height:48px;margin-right:8px;" />
-                                        }
-                                        <strong>@name</strong>
-                                    </div>
+                                    @if (!string.IsNullOrEmpty(sp.HINHANH))
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/" + sp.HINHANH)" style="height:48px;margin-right:8px;" />
+                                    }
+                                    <strong>@name</strong>
                                 </td>
                                 <td class="text-center">@qty</td>
                                 <td class="text-right">@price.ToString("N0") ₫</td>
                                 <td class="text-right">@line.ToString("N0") ₫</td>
 
-                                @* Hidden fields to post cart contents *@
+                                @* Hidden để gửi lên controller *@
                                 <input type="hidden" name="Items.Index" value="@item.MASP" />
                                 <input type="hidden" name="Items[@item.MASP].MASP" value="@item.MASP" />
                                 <input type="hidden" name="Items[@item.MASP].SOLUONG" value="@qty" />
@@ -89,7 +124,7 @@ else
                     <tfoot>
                         <tr>
                             <th colspan="3" class="text-right">Tạm tính</th>
-                            <th class="text-right">@ViewBag.Total.ToString("N0") ₫</th>
+                            <th id="TamTinh" class="text-right">@Model.Sum(x => (x.SANPHAM.GIA ?? 0) * (x.SOLUONG ?? 0)).ToString("N0") ₫</th>
                         </tr>
                         <tr>
                             <th colspan="3" class="text-right">Phí vận chuyển</th>
@@ -97,16 +132,16 @@ else
                         </tr>
                         <tr>
                             <th colspan="3" class="text-right">Tổng cộng</th>
-                            <th class="text-right">@ViewBag.Total.ToString("N0") ₫</th>
+                            <th id="TongCong" class="text-right">@Model.Sum(x => (x.SANPHAM.GIA ?? 0) * (x.SOLUONG ?? 0)).ToString("N0") ₫</th>
                         </tr>
                     </tfoot>
                 </table>
-
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Đặt hàng và thanh toán</button>
-                    <a href="@Url.Action("GioHang", "Home")" class="btn btn-default text-decoration-underline">Quay lại Giỏ hàng</a>
-                </div>
             </div>
+        </div>
+
+        <div class="text-right mt-3">
+            <button type="submit" class="btn btn-primary">Đặt hàng và thanh toán</button>
+            <a href="@Url.Action("GioHang", "Home")" class="btn btn-secondary">Quay lại Giỏ hàng</a>
         </div>
     }
 }
