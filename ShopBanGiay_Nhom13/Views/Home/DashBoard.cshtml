@@ -185,78 +185,95 @@
 @section Scripts {
     <script>
         const rowsPerPage = 10;
-        let currentPage = 1;
+     let currentPage = 1;
 
-        function displayTablePage(page) {
-            const rows = document.querySelectorAll(".product-row");
-            const totalPages = Math.ceil(rows.length / rowsPerPage);
+      function displayTablePage(page) {
+          const rows = document.querySelectorAll(".product-row");
+            const visibleRows = Array.from(rows).filter(r => !r.classList.contains('filtered-hidden'));
+      const totalPages = Math.ceil(visibleRows.length / rowsPerPage);
 
-            currentPage = page;
+   currentPage = page;
 
-            rows.forEach((r, i) => {
-                r.style.display = (i >= (page - 1) * rowsPerPage && i < page * rowsPerPage) ? "" : "none";
-            });
+    visibleRows.forEach(r => r.style.display = "none");
 
-            const pagination = document.getElementById("pagination");
+       visibleRows.forEach((r, i) => {
+     if (i >= (page - 1) * rowsPerPage && i < page * rowsPerPage) {
+      r.style.display = "";
+ }
+       });
+
+   const pagination = document.getElementById("pagination");
             pagination.innerHTML = "";
 
-            const btn = (label, pg, disabled = false) => {
-                let b = document.createElement("button");
-                b.innerText = label;
-                if (disabled) b.classList.add("disabled");
-                if (pg === currentPage) b.classList.add("active");
-                b.onclick = () => displayTablePage(pg);
-                pagination.appendChild(b);
-            };
+            if (visibleRows.length === 0 || totalPages <= 1) return;
 
-            btn("«", Math.max(1, page - 1), page === 1);
+            const btn = (label, pg, disabled = false) => {
+     let b = document.createElement("button");
+       b.className = "btn btn-sm btn-secondary mx-1";
+         b.innerText = label;
+    if (disabled) {
+b.classList.add("disabled");
+         b.disabled = true;
+              }
+     if (pg === currentPage) b.classList.add("active");
+                b.onclick = () => !disabled && displayTablePage(pg);
+       pagination.appendChild(b);
+       };
+
+     btn("«", Math.max(1, page - 1), page === 1);
 
             for (let i = 1; i <= totalPages; i++) btn(i, i);
 
-            btn("»", Math.min(totalPages, page + 1), page === totalPages);
+ btn("»", Math.min(totalPages, page + 1), page === totalPages);
         }
 
         function filterProducts() {
             const keyword = document.getElementById("searchBox").value.toLowerCase();
             const rows = document.querySelectorAll(".product-row");
 
-            rows.forEach(r => {
-                const name = r.getAttribute("data-name").toLowerCase();
-                const show = name.includes(keyword);
+ rows.forEach(r => {
+     const name = r.getAttribute("data-name").toLowerCase();
+         const masp = r.getAttribute("data-masp").toLowerCase();
+     const show = name.includes(keyword) || masp.includes(keyword);
 
-                r.style.display = show ? "" : "none";
-            });
+    if (show) {
+r.classList.remove("filtered-hidden");
+        } else {
+             r.classList.add("filtered-hidden");
+      r.style.display = "none";
+        }
+     });
 
-            displayTablePage(1);
+      displayTablePage(1);
         }
 
         function applySort() {
-            const type = document.getElementById("sortSelect").value;
-            const rows = Array.from(document.querySelectorAll(".product-row"));
+  const type = document.getElementById("sortSelect").value;
+ const rows = Array.from(document.querySelectorAll(".product-row"));
             const table = document.querySelector("#tableBody");
 
-            if (type === "masp" || type === "tensp") {
-                rows.sort((a, b) =>
-                    a.getAttribute(type === "masp" ? "data-masp" : "data-name")
-                        .localeCompare(
-                            b.getAttribute(type === "masp" ? "data-masp" : "data-name"),
-                            "vi"
-                        )
-                );
-            }
-            else if (type === "giaAsc" || type === "giaDesc") {
-                rows.sort((a, b) =>
-                    type === "giaAsc"
-                        ? a.getAttribute("data-price") - b.getAttribute("data-price")
-                        : b.getAttribute("data-price") - a.getAttribute("data-price")
-                );
-            }
+     if (type === "masp" || type === "tensp") {
+rows.sort((a, b) =>
+  a.getAttribute(type === "masp" ? "data-masp" : "data-name")
+ .localeCompare(
+      b.getAttribute(type === "masp" ? "data-masp" : "data-name"),
+        "vi"
+        )
+         );
+         }
+        else if (type === "giaAsc" || type === "giaDesc") {
+         rows.sort((a, b) =>
+           type === "giaAsc"
+   ? a.getAttribute("data-price") - b.getAttribute("data-price")
+     : b.getAttribute("data-price") - a.getAttribute("data-price")
+         );
+   }
 
             table.innerHTML = "";
             rows.forEach(r => table.appendChild(r));
 
             displayTablePage(1);
-        }
+}
 
         window.onload = () => displayTablePage(1);
     </script>
